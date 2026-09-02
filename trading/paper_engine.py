@@ -8,6 +8,8 @@ from typing import Dict, List, Optional, Any, Callable
 import json
 import uuid
 
+from loguru import logger
+
 
 class BetStatus(str, Enum):
     PENDING = "pending"
@@ -78,19 +80,29 @@ class AgentState:
     survival_mode: SurvivalMode = SurvivalMode.AGGRESSIVE
     is_alive: bool = True
     kill_reason: Optional[str] = None
-    peak_bankroll: float = 100.0
+    # Peak is seeded from actual equity in __post_init__, never a magic constant.
+    peak_bankroll: float = 0.0
     consecutive_losses: int = 0
     consecutive_wins: int = 0
     balance_history: List[Dict[str, Any]] = field(default_factory=list)
+    # Capital committed to bets that are still PENDING. This is *not* lost money,
+    # it is merely unavailable, so it must stay inside equity.
+    locked_balance: float = 0.0
 
     def __post_init__(self):
         if not self.balance_history:
             self.balance_history.append({
                 "timestamp": datetime.now().isoformat(),
                 "bankroll": self.current_bankroll,
+                "equity": self.equity,
                 "event": "initialization"
             })
-        self.peak_bankroll = max(self.peak_bankroll, self.current_bankroll)
+        self.peak_bankroll = max(self.peak_bankroll, self.equity)
+
+    @property
+    def equity(self) -> float:
+        """Total account value: free cash plus stakes locked in open bets."""
+        return self.current_bankroll + self.locked_balance
 
     def calculate_metrics(self) -> Dict[str, Any]:
         total_bets = len(self.bets)
@@ -101,10 +113,12 @@ class AgentState:
         
         win_rate = (len(won_bets) / len(settled_bets)) if settled_bets else 0.0
         total_staked = sum(b.stake for b in self.bets)
-        total_profit = self.current_bankroll - self.initial_bankroll
+        # PnL and drawdown are measured on equity, so open positions do not
+        # register as phantom losses while they are still pending.
+        total_profit = self.equity - self.initial_bankroll
         roi = (total_profit / self.initial_bankroll * 100.0) if self.initial_bankroll > 0 else 0.0
-        
-        current_drawdown = (self.peak_bankroll - self.current_bankroll) / self.peak_bankroll if self.peak_bankroll > 0 else 0.0
+
+        current_drawdown = (self.peak_bankroll - self.equity) / self.peak_bankroll if self.peak_bankroll > 0 else 0.0
         
         # Calculate profit factor
         gross_profit = sum(b.pnl for b in won_bets)
@@ -116,6 +130,9 @@ class AgentState:
             "is_alive": self.is_alive,
             "kill_reason": self.kill_reason,
             "current_bankroll": round(self.current_bankroll, 2),
+            "available_balance": round(self.current_bankroll, 2),
+            "locked_balance": round(self.locked_balance, 2),
+            "equity": round(self.equity, 2),
             "initial_bankroll": round(self.initial_bankroll, 2),
             "peak_bankroll": round(self.peak_bankroll, 2),
             "total_profit": round(total_profit, 2),
@@ -146,12 +163,15 @@ class AgentState:
         threshold = threshold_map.get(self.survival_mode, 0.50)
         min_required_bankroll = self.initial_bankroll * threshold
 
-        if self.current_bankroll < min_required_bankroll:
+        # Judge survival on equity, not free cash. Locking stake into an open
+        # bet is not a realised loss and must never trip the circuit breaker.
+        if self.equity < min_required_bankroll:
             self.is_alive = False
-            self.kill_reason = f"Bankroll (${self.current_bankroll:.2f}) dropped below {threshold*100:.0f}% threshold (${min_required_bankroll:.2f})"
+            self.kill_reason = f"Equity (${self.equity:.2f}) dropped below {threshold*100:.0f}% threshold (${min_required_bankroll:.2f})"
             self.balance_history.append({
                 "timestamp": datetime.now().isoformat(),
                 "bankroll": self.current_bankroll,
+                "equity": self.equity,
                 "event": f"TERMINATED: {self.kill_reason}"
             })
             return False
@@ -175,8 +195,14 @@ class PaperTradingEngine:
         for listener in self._listeners:
             try:
                 listener(event_name, payload)
-            except Exception:
-                pass
+            except Exception as exc:
+                # A broken listener must not abort settlement, but silently
+                # discarding the error hides real bugs (see the dead WebSocket
+                # broadcaster). Log it loudly instead.
+                logger.exception(
+                    f"Listener {getattr(listener, '__name__', repr(listener))} "
+                    f"raised on event '{event_name}': {exc}"
+                )
 
     def create_agent(
         self,
@@ -216,9 +242,11 @@ class PaperTradingEngine:
         if stake <= 0 or stake > agent.current_bankroll:
             return None
 
-        # Deduct stake from available bankroll
+        # Move stake from free cash into locked balance. Equity is unchanged:
+        # the money is committed, not lost.
         agent.current_bankroll -= stake
-        
+        agent.locked_balance += stake
+
         bet_id = f"bet_{uuid.uuid4().hex[:8]}"
         bet = Bet(
             id=bet_id,
@@ -236,6 +264,7 @@ class PaperTradingEngine:
         agent.balance_history.append({
             "timestamp": datetime.now().isoformat(),
             "bankroll": agent.current_bankroll,
+            "equity": agent.equity,
             "event": f"Placed bet {bet_id} on {event} (${stake:.2f})"
         })
         
@@ -261,6 +290,10 @@ class PaperTradingEngine:
 
         bet.settled_at = datetime.now()
 
+        # The stake is no longer committed once the bet resolves, whatever the
+        # outcome. Release it first, then apply the payout to free cash.
+        agent.locked_balance = max(0.0, agent.locked_balance - bet.stake)
+
         if is_cancelled:
             bet.status = BetStatus.CANCELLED
             bet.result = bet.stake
@@ -276,17 +309,19 @@ class PaperTradingEngine:
             agent.current_bankroll += payout
             agent.consecutive_wins += 1
             agent.consecutive_losses = 0
-            if agent.current_bankroll > agent.peak_bankroll:
-                agent.peak_bankroll = agent.current_bankroll
         else:
             bet.status = BetStatus.LOST
             bet.result = 0.0
             agent.consecutive_losses += 1
             agent.consecutive_wins = 0
 
+        # Track the high-water mark on equity, for every settlement branch.
+        agent.peak_bankroll = max(agent.peak_bankroll, agent.equity)
+
         agent.balance_history.append({
             "timestamp": datetime.now().isoformat(),
             "bankroll": agent.current_bankroll,
+            "equity": agent.equity,
             "event": f"Settled {bet_id}: {bet.status.value.upper()} (PnL: ${bet.pnl:+.2f})"
         })
 

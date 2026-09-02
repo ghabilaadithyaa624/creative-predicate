@@ -1,6 +1,8 @@
 """
 FastAPI route definitions for the Autonomous Trading Agent System.
 """
+import asyncio
+import os
 from typing import Dict, List, Any
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,16 +22,54 @@ def create_app(engine: PaperTradingEngine) -> FastAPI:
         version="1.0.0",
     )
 
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+    # A wildcard origin cannot be combined with credentials: browsers reject
+    # the response outright. Allow credentialed access only for explicitly
+    # configured origins.
+    allowed_origins = [
+        o.strip()
+        for o in os.getenv("CORS_ALLOW_ORIGINS", "").split(",")
+        if o.strip()
+    ]
+    if allowed_origins:
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=allowed_origins,
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
+    else:
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=["*"],
+            allow_credentials=False,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
 
     ws_manager = ConnectionManager()
-    engine.add_listener(lambda ev, data: app.state.loop.create_task(ws_manager.broadcast({"event": ev, "data": data})) if hasattr(app.state, "loop") else None)
+
+    @app.on_event("startup")
+    async def _capture_event_loop():
+        # The engine emits events from synchronous code, so the broadcaster
+        # needs a handle on the serving loop to schedule coroutines onto it.
+        app.state.loop = asyncio.get_running_loop()
+
+    def _broadcast_engine_event(event_name: str, data: Dict[str, Any]) -> None:
+        loop = getattr(app.state, "loop", None)
+        if loop is None or loop.is_closed():
+            return
+        message = {"event": event_name, "data": data}
+        try:
+            if loop is asyncio.get_event_loop_policy().get_event_loop() and loop.is_running():
+                loop.create_task(ws_manager.broadcast(message))
+            else:
+                asyncio.run_coroutine_threadsafe(ws_manager.broadcast(message), loop)
+        except RuntimeError:
+            # Emitted from a non-async thread: hand off to the serving loop.
+            asyncio.run_coroutine_threadsafe(ws_manager.broadcast(message), loop)
+
+    engine.add_listener(_broadcast_engine_event)
 
     scraper = MarketScraper()
 

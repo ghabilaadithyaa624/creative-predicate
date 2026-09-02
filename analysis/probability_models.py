@@ -40,8 +40,12 @@ class ProbabilityEstimator:
         elif base_p < 0.40:
             bias_adj = -0.025 * (0.5 - base_p)
         else:
-            # Moderate edge from Bayesian prior
-            bias_adj = 0.025 if (int(volume_24h) % 2 == 0) else -0.015
+            # Near a coin-flip there is no favourite-longshot bias to correct,
+            # so claim no edge. (This branch previously keyed off the parity of
+            # the volume integer, which is pure noise dressed up as a signal:
+            # it manufactured a spurious +2.5% edge on half of all markets and
+            # was a leading cause of phantom backtest profits.)
+            bias_adj = 0.0
 
         # 2. Volume efficiency weight
         volume_confidence = min(1.0, np.log10(max(volume_24h, 10.0)) / 6.0)

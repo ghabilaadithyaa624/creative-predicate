@@ -61,11 +61,26 @@ class BacktestEngine:
         data: pd.DataFrame,
         start_date: Optional[datetime] = None,
         end_date: Optional[datetime] = None,
+        resample_outcomes: bool = False,
+        rng: Optional[np.random.Generator] = None,
     ) -> Dict[str, Any]:
         """
         Executes a backtest given a strategy sizing function:
         strategy(state_dict, row_series) -> bet_stake (float)
+
+        Parameters
+        ----------
+        resample_outcomes:
+            When False (default) a fixed ``result`` column is replayed exactly,
+            which is what you want for a single deterministic walk-forward run.
+            When True the outcome of every bet is redrawn from the row's
+            ``true_prob``. Monte Carlo requires this: otherwise reshuffling
+            rows that carry frozen results just reorders the same wins and
+            losses, yielding zero variance and a meaningless 0% ruin estimate.
+        rng:
+            Optional numpy Generator for reproducible outcome draws.
         """
+        rng = rng if rng is not None else np.random.default_rng()
         df = data.copy()
         if start_date and "timestamp" in df.columns:
             df = df[df["timestamp"] >= start_date]
@@ -92,7 +107,11 @@ class BacktestEngine:
 
             if stake > 0 and stake <= bankroll:
                 bankroll -= stake
-                won = bool(row["result"]) if "result" in row else (np.random.random() < row.get("true_prob", 0.5))
+                if "result" in row and not resample_outcomes:
+                    won = bool(row["result"])
+                else:
+                    # Draw a fresh outcome from the row's true probability.
+                    won = rng.random() < float(row.get("true_prob", 0.5))
                 odds = float(row["odds"])
 
                 if won:
@@ -134,17 +153,29 @@ class BacktestEngine:
         strategy: Callable[[Dict[str, Any], pd.Series], float],
         data: pd.DataFrame,
         n_simulations: int = 500,
+        seed: Optional[int] = None,
     ) -> Dict[str, Any]:
         """
-        Runs Monte Carlo iterations by bootstrap-resampling the historical sequence.
+        Runs Monte Carlo iterations by bootstrap-resampling the historical
+        sequence *and* redrawing each bet outcome from its true probability.
+
+        Both sources of randomness are required. Reshuffling alone leaves the
+        frozen per-row results intact, so every iteration finishes at the same
+        bankroll (std = 0, probability of ruin = 0) regardless of strategy.
         """
         final_balances = []
         ruin_count = 0
         profit_count = 0
+        rng = np.random.default_rng(seed)
 
         for _ in range(n_simulations):
-            shuffled_df = data.sample(frac=1.0).reset_index(drop=True)
-            res = self.run_backtest(strategy, shuffled_df)
+            # Resample rows with replacement (true bootstrap).
+            shuffled_df = data.sample(
+                frac=1.0, replace=True, random_state=int(rng.integers(0, 2**32 - 1))
+            ).reset_index(drop=True)
+            res = self.run_backtest(
+                strategy, shuffled_df, resample_outcomes=True, rng=rng
+            )
             final_bal = res["final_bankroll"]
             final_balances.append(final_bal)
 

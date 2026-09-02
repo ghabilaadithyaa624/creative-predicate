@@ -1,6 +1,7 @@
 """
 Settlement verification and outcome resolution engine.
 """
+import random
 from datetime import datetime
 from typing import Dict, List, Optional, Any, Tuple
 from loguru import logger
@@ -12,9 +13,12 @@ class SettlementEngine:
     Resolves outcomes for open bets by querying oracles, market results, or simulations.
     """
 
-    def __init__(self, paper_engine: PaperTradingEngine):
+    def __init__(self, paper_engine: PaperTradingEngine, seed: Optional[int] = None):
         self.paper_engine = paper_engine
         self.resolution_cache: Dict[str, Dict[str, Any]] = {}
+        # Dedicated RNG so simulated settlement is reproducible with a seed and
+        # never disturbs global random state used elsewhere.
+        self._rng = random.Random(seed)
 
     def register_market_outcome(
         self,
@@ -59,15 +63,74 @@ class SettlementEngine:
 
         return settled_records
 
-    def auto_simulate_pending_resolutions(self, win_probability_weight: float = 0.5):
+    def auto_simulate_pending_resolutions(
+        self,
+        ground_truth: Optional[Dict[str, float]] = None,
+        edge_realisation: float = 1.0,
+    ):
         """
-        Convenience function for simulation tests: settle open bets based on odds probability.
+        Simulate resolution of open bets against a *ground-truth* win probability.
+
+        Why this matters
+        ----------------
+        The previous implementation drew outcomes from the bookmaker's implied
+        probability (1 / odds) while the agent staked on its own estimated
+        probability. That makes the simulated expected value identically zero
+        (in fact negative once the overround is included) no matter how good
+        the agent's model is, so every backtest measured nothing but variance
+        and a profitable strategy was indistinguishable from a broken one.
+
+        Outcomes are now drawn from the probability the agent actually forecast
+        (``bet.metadata['true_prob']``), so a genuine edge shows up as genuine
+        profit and a bogus edge shows up as a loss.
+
+        Parameters
+        ----------
+        ground_truth:
+            Optional map of ``event name -> true win probability`` for the
+            selection that was backed. Takes priority over bet metadata; use it
+            to score an agent against a world that disagrees with its forecast.
+        edge_realisation:
+            Fraction of the agent's claimed edge over the market that is real.
+            ``1.0`` trusts the forecast fully; ``0.0`` collapses to the market
+            implied probability (a pure zero-edge world, the old behaviour);
+            values in between model a partially-correct model. Useful for
+            stress-testing how much of the reported PnL depends on the model
+            being right.
         """
-        import random
         for agent_name, agent in self.paper_engine.agents.items():
             for bet in list(agent.bets):
-                if bet.status == BetStatus.PENDING:
-                    implied_prob = 1.0 / bet.odds if bet.odds > 0 else 0.5
-                    # Random outcome weighted by implied probability
-                    won = random.random() < implied_prob
-                    self.paper_engine.settle_bet(agent_name, bet.id, won=won)
+                if bet.status != BetStatus.PENDING:
+                    continue
+
+                win_prob = self._resolve_win_probability(
+                    bet, ground_truth, edge_realisation
+                )
+                won = self._rng.random() < win_prob
+                self.paper_engine.settle_bet(agent_name, bet.id, won=won)
+
+    @staticmethod
+    def _resolve_win_probability(
+        bet: Bet,
+        ground_truth: Optional[Dict[str, float]],
+        edge_realisation: float,
+    ) -> float:
+        """Determine the probability an open bet should win under simulation."""
+        implied_prob = 1.0 / bet.odds if bet.odds > 0 else 0.5
+
+        if ground_truth and bet.event in ground_truth:
+            true_prob = float(ground_truth[bet.event])
+        else:
+            forecast = bet.metadata.get("true_prob")
+            try:
+                true_prob = float(forecast) if forecast is not None else implied_prob
+            except (TypeError, ValueError):
+                logger.warning(
+                    f"Bet {bet.id} carries a non-numeric true_prob "
+                    f"({forecast!r}); falling back to market implied probability."
+                )
+                true_prob = implied_prob
+
+        # Interpolate between the market's view and the agent's view.
+        realised = implied_prob + edge_realisation * (true_prob - implied_prob)
+        return min(max(realised, 0.0), 1.0)
