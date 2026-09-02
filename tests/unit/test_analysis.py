@@ -1,8 +1,8 @@
 """
 Unit tests for Odds Analyzer and Probability Estimator.
 """
-from analysis.odds_analyzer import OddsAnalyzer
-from analysis.probability_models import ProbabilityEstimator
+from backend.analysis.odds_analyzer import OddsAnalyzer
+from backend.analysis.probability_models import ProbabilityEstimator
 
 
 def test_odds_conversions():

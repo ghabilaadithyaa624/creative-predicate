@@ -39,29 +39,52 @@ The core install deliberately excludes heavy dependencies. Every optional stack 
 
 ---
 
+## Repository layout
+
+```
+backend/     trading engine, agents, analysis, risk, backtesting, API
+frontend/    presentation layer (Streamlit dashboard)
+scripts/     one-off utilities
+tests/       test suite
+main.py      CLI entry point
+```
+
+The dependency runs one way: `frontend` imports `backend`, never the reverse.
+A test enforces this (`tests/unit/test_layout.py`), so the API stays importable
+without Streamlit installed.
+
+Imports use the full path, e.g.:
+
+```python
+from backend.trading.paper_engine import PaperTradingEngine
+from backend.analysis.scraper import MarketScraper
+```
+
+---
+
 ## What actually runs
 
 These modules are wired into the CLI, the agents, and the API. They are the working system.
 
 | Module | Role |
 | :--- | :--- |
-| [`trading/paper_engine.py`](trading/paper_engine.py) | The ledger. Bets, stake locking, settlement, equity, drawdown, survival circuit breakers. |
-| [`trading/settlement.py`](trading/settlement.py) | Resolves open bets against registered outcomes or a seeded simulation. |
-| [`trading/bet_manager.py`](trading/bet_manager.py) | Fractional Kelly sizing and portfolio exposure caps. |
-| [`risk/advanced_position_sizing.py`](risk/advanced_position_sizing.py) | Optimal *f*, uncertainty-adjusted sizing. |
-| [`analysis/probability_models.py`](analysis/probability_models.py) | Fair-probability estimation (favourite–longshot correction). |
-| [`analysis/odds_analyzer.py`](analysis/odds_analyzer.py) | Odds conversion, vig removal, arbitrage detection. |
-| [`analysis/scraper.py`](analysis/scraper.py) | Polymarket Gamma API with synthetic fallback. |
-| [`backtest/simulator.py`](backtest/simulator.py) | Walk-forward backtest and bootstrap Monte Carlo. |
-| [`agents/`](agents/) | Perceive → reason → act loop for prediction-market and sports agents. |
-| [`api/routes.py`](api/routes.py) | REST endpoints and `/ws/telemetry` live event stream. |
-| [`dashboard/app.py`](dashboard/app.py) | Streamlit monitor, backtest lab, market analyzer. |
+| [`backend/trading/paper_engine.py`](backend/trading/paper_engine.py) | The ledger. Bets, stake locking, settlement, equity, drawdown, survival circuit breakers. |
+| [`backend/trading/settlement.py`](backend/trading/settlement.py) | Resolves open bets against registered outcomes or a seeded simulation. |
+| [`backend/trading/bet_manager.py`](backend/trading/bet_manager.py) | Fractional Kelly sizing and portfolio exposure caps. |
+| [`backend/risk/advanced_position_sizing.py`](backend/risk/advanced_position_sizing.py) | Optimal *f*, uncertainty-adjusted sizing. |
+| [`backend/analysis/probability_models.py`](backend/analysis/probability_models.py) | Fair-probability estimation (favourite–longshot correction). |
+| [`backend/analysis/odds_analyzer.py`](backend/analysis/odds_analyzer.py) | Odds conversion, vig removal, arbitrage detection. |
+| [`backend/analysis/scraper.py`](backend/analysis/scraper.py) | Polymarket Gamma API with synthetic fallback. |
+| [`backend/backtest/simulator.py`](backend/backtest/simulator.py) | Walk-forward backtest and bootstrap Monte Carlo. |
+| [`backend/agents/`](backend/agents/) | Perceive → reason → act loop for prediction-market and sports agents. |
+| [`backend/api/routes.py`](backend/api/routes.py) | REST endpoints and `/ws/telemetry` live event stream. |
+| [`frontend/dashboard/app.py`](frontend/dashboard/app.py) | Streamlit monitor, backtest lab, market analyzer. |
 
 ### Experimental / not wired in
 
 These are self-contained implementations that **no entry point currently calls**. They are exercised by tests only. Treat them as research spikes, not features:
 
-`quantum/` (QAOA portfolio optimizer, VQC) · `neuromorphic/` (LIF neurons, echo-state reservoir) · `federated/` (Shamir secret sharing, FedAvg) · `blockchain/` (stake-weighted + BFT voting) · `swarm/` (role-based consensus) · `reinforcement_learning/` (PPO trader) · `vision/` (browser/OCR agent)
+`backend/quantum/` (QAOA portfolio optimizer, VQC) · `backend/neuromorphic/` (LIF neurons, echo-state reservoir) · `backend/federated/` (Shamir secret sharing, FedAvg) · `backend/blockchain/` (stake-weighted + BFT voting) · `backend/swarm/` (role-based consensus) · `backend/reinforcement_learning/` (PPO trader) · `backend/vision/` (browser/OCR agent)
 
 ---
 

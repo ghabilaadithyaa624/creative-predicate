@@ -22,7 +22,7 @@ services:
   # Needs the [dashboard] extra.
   dashboard:
     build: .
-    command: sh -c "pip install --no-cache-dir -e '.[dashboard]' && streamlit run dashboard/app.py --server.port 8501 --server.address 0.0.0.0"
+    command: sh -c "pip install --no-cache-dir -e '.[dashboard]' && streamlit run frontend/dashboard/app.py --server.port 8501 --server.address 0.0.0.0"
     ports:
       - "8501:8501"
     volumes:

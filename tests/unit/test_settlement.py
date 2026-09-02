@@ -11,8 +11,8 @@ These cover two classes of bug:
 """
 import pytest
 
-from trading.paper_engine import BetStatus, PaperTradingEngine, SurvivalMode
-from trading.settlement import SettlementEngine
+from backend.trading.paper_engine import BetStatus, PaperTradingEngine, SurvivalMode
+from backend.trading.settlement import SettlementEngine
 
 
 def _run_series(true_prob, odds, n=4000, seed=11, edge_realisation=1.0):
@@ -168,7 +168,7 @@ def test_no_phantom_edge_from_volume_parity():
 
     Two volumes differing by 1 must not produce different fair probabilities.
     """
-    from analysis.probability_models import ProbabilityEstimator
+    from backend.analysis.probability_models import ProbabilityEstimator
 
     est = ProbabilityEstimator()
     for implied in (0.45, 0.50, 0.55):
@@ -182,7 +182,7 @@ def test_no_phantom_edge_from_volume_parity():
 
 def test_midrange_market_yields_no_claimed_edge():
     """An efficiently-priced coin-flip market must show ~zero edge."""
-    from analysis.probability_models import ProbabilityEstimator
+    from backend.analysis.probability_models import ProbabilityEstimator
 
     est = ProbabilityEstimator()
     fair = est.estimate_fair_probability(0.50, volume_24h=250000.0)
@@ -197,8 +197,8 @@ def test_monte_carlo_produces_real_dispersion():
     reorder the same wins and losses, so every iteration ended at an identical
     bankroll: std 0, ruin probability 0. Outcomes must be redrawn per bet.
     """
-    from backtest.historical_data import HistoricalDataLoader
-    from backtest.simulator import BacktestEngine
+    from backend.backtest.historical_data import HistoricalDataLoader
+    from backend.backtest.simulator import BacktestEngine
 
     df = HistoricalDataLoader.generate_synthetic_data(num_records=150)
     engine = BacktestEngine(initial_bankroll=100.0)
@@ -220,8 +220,8 @@ def test_monte_carlo_produces_real_dispersion():
 
 def test_walk_forward_still_deterministic():
     """A plain backtest must keep replaying the fixed result column exactly."""
-    from backtest.historical_data import HistoricalDataLoader
-    from backtest.simulator import BacktestEngine
+    from backend.backtest.historical_data import HistoricalDataLoader
+    from backend.backtest.simulator import BacktestEngine
 
     df = HistoricalDataLoader.generate_synthetic_data(num_records=120)
     engine = BacktestEngine(initial_bankroll=100.0)

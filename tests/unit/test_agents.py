@@ -5,9 +5,9 @@ import asyncio
 
 import pytest
 
-from agents.polymarket_agent import PolymarketAgent
-from agents.sports_agent import SportsAgent
-from trading.paper_engine import PaperTradingEngine, SurvivalMode
+from backend.agents.polymarket_agent import PolymarketAgent
+from backend.agents.sports_agent import SportsAgent
+from backend.trading.paper_engine import PaperTradingEngine, SurvivalMode
 
 
 @pytest.mark.asyncio

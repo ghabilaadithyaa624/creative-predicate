@@ -6,14 +6,14 @@ import asyncio
 import numpy as np
 import pytest
 
-from blockchain.decentralized_consensus import BlockchainConsensus, OffChainConsensusBFT
-from feeds.websocket_manager import ArbitrageDetector, MarketUpdate, WebSocketFeedManager
-from ml_models.probability_engine import EnsembleProbabilityModel, SentimentAnalyzer
-from monte_carlo.extreme_risk_simulation import MonteCarloRiskEngine
-from notifications.alert_manager import NotificationManager
-from reinforcement_learning.trading_agent_rl import PPOTrader, TradingEnvironment
-from risk.advanced_position_sizing import PositionSizer
-from swarm.coordinator import AgentRole, SwarmCoordinator
+from backend.blockchain.decentralized_consensus import BlockchainConsensus, OffChainConsensusBFT
+from backend.feeds.websocket_manager import ArbitrageDetector, MarketUpdate, WebSocketFeedManager
+from backend.ml_models.probability_engine import EnsembleProbabilityModel, SentimentAnalyzer
+from backend.monte_carlo.extreme_risk_simulation import MonteCarloRiskEngine
+from backend.notifications.alert_manager import NotificationManager
+from backend.reinforcement_learning.trading_agent_rl import PPOTrader, TradingEnvironment
+from backend.risk.advanced_position_sizing import PositionSizer
+from backend.swarm.coordinator import AgentRole, SwarmCoordinator
 
 
 def test_sentiment_and_ensemble():

@@ -15,15 +15,15 @@ ROOT_DIR = Path(__file__).resolve().parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from agents.polymarket_agent import PolymarketAgent
-from agents.sports_agent import SportsAgent
-from agents.survival_manager import SurvivalRule
-from backtest.historical_data import HistoricalDataLoader
-from backtest.results_analyzer import ResultsAnalyzer
-from backtest.simulator import BacktestEngine
-from config.settings import get_settings
-from trading.paper_engine import PaperTradingEngine, SurvivalMode
-from trading.settlement import SettlementEngine
+from backend.agents.polymarket_agent import PolymarketAgent
+from backend.agents.sports_agent import SportsAgent
+from backend.agents.survival_manager import SurvivalRule
+from backend.backtest.historical_data import HistoricalDataLoader
+from backend.backtest.results_analyzer import ResultsAnalyzer
+from backend.backtest.simulator import BacktestEngine
+from backend.config.settings import get_settings
+from backend.trading.paper_engine import PaperTradingEngine, SurvivalMode
+from backend.trading.settlement import SettlementEngine
 
 
 @click.group()
@@ -192,7 +192,7 @@ def backtest(data: str, records: int, monte_carlo: bool):
 def dashboard(port: int):
     """Launch the interactive Streamlit monitoring dashboard."""
     import subprocess
-    app_path = ROOT_DIR / "dashboard" / "app.py"
+    app_path = ROOT_DIR / "frontend" / "dashboard" / "app.py"
     click.secho(f"\n[*] Launching Streamlit Dashboard on port {port}...", fg="green", bold=True)
     subprocess.run(["streamlit", "run", str(app_path), "--server.port", str(port)])
 
@@ -204,7 +204,7 @@ def api(port: int, host: str):
     """Launch FastAPI backend server with REST & WebSocket endpoints."""
     import uvicorn
 
-    from api.routes import create_app
+    from backend.api.routes import create_app
     engine = PaperTradingEngine(initial_bankroll=100.0)
     app = create_app(engine)
     click.secho(f"\n[*] Launching FastAPI Server on http://{host}:{port}...", fg="cyan", bold=True)

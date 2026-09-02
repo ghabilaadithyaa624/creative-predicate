@@ -16,7 +16,7 @@ from unittest.mock import patch
 
 import pytest
 
-from analysis.scraper import MarketScraper
+from backend.analysis.scraper import MarketScraper
 
 
 class _FakeResponse:
@@ -98,7 +98,7 @@ def test_rejects_unusable_prices(raw):
 
 def test_real_payload_prices_are_exact():
     """The regression: 0.945 must not become a 50/50 coin flip."""
-    with patch("analysis.scraper.requests.get",
+    with patch("backend.analysis.scraper.requests.get",
                return_value=_FakeResponse(REAL_PAYLOAD)):
         markets = MarketScraper().scrape_polymarket()
 
@@ -124,7 +124,7 @@ def test_never_emits_fabricated_even_odds_for_real_source():
             "markets": [{"id": "1", "outcomePrices": "not-json"}],
         }
     ]
-    with patch("analysis.scraper.requests.get",
+    with patch("backend.analysis.scraper.requests.get",
                return_value=_FakeResponse(broken)):
         markets = MarketScraper().scrape_polymarket(allow_synthetic_fallback=False)
 
@@ -138,7 +138,7 @@ def test_mixed_payload_keeps_good_skips_bad():
         "markets": [{"id": "9", "outcomePrices": '["1.0", "0.0"]'}],
     })
 
-    with patch("analysis.scraper.requests.get",
+    with patch("backend.analysis.scraper.requests.get",
                return_value=_FakeResponse(payload)):
         markets = MarketScraper().scrape_polymarket(allow_synthetic_fallback=False)
 
@@ -154,7 +154,7 @@ def test_volume_falls_back_to_inner_market():
         "markets": [{"id": "1", "outcomePrices": '["0.5", "0.5"]',
                      "volume": "12345.6"}],
     }]
-    with patch("analysis.scraper.requests.get",
+    with patch("backend.analysis.scraper.requests.get",
                return_value=_FakeResponse(payload)):
         markets = MarketScraper().scrape_polymarket(allow_synthetic_fallback=False)
 
@@ -165,7 +165,7 @@ def test_volume_falls_back_to_inner_market():
 
 def test_fallback_is_labelled_as_simulated():
     """Synthetic markets must be distinguishable from real ones."""
-    with patch("analysis.scraper.requests.get",
+    with patch("backend.analysis.scraper.requests.get",
                side_effect=OSError("network unreachable")):
         markets = MarketScraper().scrape_polymarket()
 
@@ -174,7 +174,7 @@ def test_fallback_is_labelled_as_simulated():
 
 
 def test_fallback_can_be_disabled():
-    with patch("analysis.scraper.requests.get",
+    with patch("backend.analysis.scraper.requests.get",
                side_effect=OSError("network unreachable")):
         markets = MarketScraper().scrape_polymarket(allow_synthetic_fallback=False)
 
@@ -182,7 +182,7 @@ def test_fallback_can_be_disabled():
 
 
 def test_non_200_does_not_raise():
-    with patch("analysis.scraper.requests.get",
+    with patch("backend.analysis.scraper.requests.get",
                return_value=_FakeResponse([], status_code=503)):
         markets = MarketScraper().scrape_polymarket(allow_synthetic_fallback=False)
 

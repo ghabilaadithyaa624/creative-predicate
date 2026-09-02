@@ -76,3 +76,10 @@ jobs:
 
       - name: Multi-agent tournament
         run: creative-predicate simulate-all --rounds 3
+
+      # The frontend must import cleanly and must not be required by the
+      # backend. Guards the one-way backend <- frontend dependency.
+      - name: Frontend imports resolve
+        run: |
+          pip install -e ".[dashboard]"
+          python -c "import frontend.dashboard.app; print('frontend ok')"

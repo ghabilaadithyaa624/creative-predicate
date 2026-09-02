@@ -46,7 +46,7 @@ montecarlo:
 	python main.py backtest --monte-carlo
 
 dashboard:
-	streamlit run dashboard/app.py
+	streamlit run frontend/dashboard/app.py
 
 api:
 	python main.py api --port 8000
