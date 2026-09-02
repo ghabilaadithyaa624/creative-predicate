@@ -2,12 +2,20 @@
 Multi-channel alert and incident manager for Telegram, Discord, Slack, and Console.
 """
 import asyncio
+import json
 from dataclasses import dataclass, field
 from datetime import datetime
-import json
-from typing import Dict, List, Optional, Any
-import aiohttp
+from typing import Any, Dict, List, Optional
+
 from loguru import logger
+
+try:
+    import aiohttp
+except ImportError:  # pragma: no cover - optional transport dependency
+    # Only needed to actually POST to Discord/Telegram/Slack webhooks.
+    # Console alerts and the whole alert-history API work without it, so an
+    # absent aiohttp must not break importing the package.
+    aiohttp = None
 
 
 @dataclass
@@ -58,6 +66,13 @@ class NotificationManager:
             await asyncio.gather(*tasks, return_exceptions=True)
 
     async def _dispatch_channel(self, channel: str, alert: Alert):
+        if aiohttp is None:
+            logger.warning(
+                f"Cannot dispatch '{channel}' alert: aiohttp is not installed. "
+                f"Install the API extra (pip install -e '.[api]') to enable "
+                f"webhook delivery."
+            )
+            return
         try:
             if channel == "discord" and "webhook" in self.config["discord"]:
                 url = self.config["discord"]["webhook"]

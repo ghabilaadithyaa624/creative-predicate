@@ -3,12 +3,13 @@ Playwright-based browser automation controller with vision and OCR support.
 """
 import io
 from dataclasses import dataclass
-from typing import Optional, Dict, List, Tuple, Any
+from typing import Any, Dict, List, Optional, Tuple
+
 from loguru import logger
 from PIL import Image
 
 try:
-    from playwright.async_api import async_playwright, Page, Browser, BrowserContext
+    from playwright.async_api import Browser, BrowserContext, Page, async_playwright
     HAS_PLAYWRIGHT = True
 except ImportError:
     HAS_PLAYWRIGHT = False

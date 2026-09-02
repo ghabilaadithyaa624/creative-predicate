@@ -1,9 +1,9 @@
 """Neuromorphic module initialization."""
 from neuromorphic.spiking_neural_networks import (
-    LIFNeuron,
-    ReservoirComputing,
     BrainInspiredRewardSystem,
+    LIFNeuron,
     NeuromorphicTrader,
+    ReservoirComputing,
 )
 
 __all__ = [

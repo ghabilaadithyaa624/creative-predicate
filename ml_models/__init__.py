@@ -1,9 +1,9 @@
 """ML models module initialization."""
 from ml_models.probability_engine import (
     DeepProbabilityNetwork,
-    SentimentAnalyzer,
     EnsembleProbabilityModel,
     MarketFeatures,
+    SentimentAnalyzer,
 )
 
 __all__ = [

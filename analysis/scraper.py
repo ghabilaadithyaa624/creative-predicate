@@ -1,10 +1,11 @@
 """
 Web scraping and prediction market ingestion modules.
 """
+import random
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import List, Dict, Optional, Any
-import random
+from typing import Any, Dict, List, Optional
+
 import requests
 from bs4 import BeautifulSoup
 from loguru import logger
@@ -105,7 +106,7 @@ class MarketScraper:
             ("OpenAI releases GPT-5 in 2026", "tech", 2.10, 1.80, 450000.0),
             ("Ethereum market cap exceeds $600B", "crypto", 2.60, 1.55, 290000.0),
         ]
-        
+
         selected = templates[:count] if count <= len(templates) else templates
         results = []
         for name, cat, yes_odds, no_odds, vol in selected:
@@ -113,7 +114,7 @@ class MarketScraper:
             drift = random.uniform(-0.05, 0.05)
             y_odds = max(1.10, round(yes_odds + drift, 2))
             n_odds = max(1.10, round(no_odds - drift, 2))
-            
+
             results.append(MarketData(
                 event_name=name,
                 category=cat,

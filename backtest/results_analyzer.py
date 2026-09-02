@@ -1,7 +1,7 @@
 """
 Backtest reporting and summary formatting utilities.
 """
-from typing import Dict, Any
+from typing import Any, Dict
 
 
 class ResultsAnalyzer:

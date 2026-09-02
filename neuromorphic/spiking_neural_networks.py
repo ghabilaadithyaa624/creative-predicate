@@ -8,7 +8,8 @@ Implements:
 """
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
 from loguru import logger
 
@@ -29,7 +30,7 @@ class LIFNeuron:
         self.v_thresh = v_threshold
         self.v_reset = v_reset
         self.refractory = refractory_period
-        
+
         self.v = v_reset
         self.last_spike_time = -999.0
         self.spike_history: List[float] = []
@@ -64,15 +65,15 @@ class ReservoirComputing:
     ):
         self.n_inputs = n_inputs
         self.n_reservoir = n_reservoir
-        
+
         self.w_in = np.random.randn(n_reservoir, n_inputs) * 0.2
         w_res_raw = np.random.randn(n_reservoir, n_reservoir)
         w_res_raw *= (np.random.rand(n_reservoir, n_reservoir) < sparsity)
-        
+
         # Scale to spectral radius
         eig_max = max(abs(np.linalg.eigvals(w_res_raw)))
         self.w_res = w_res_raw * (spectral_radius / max(1e-6, eig_max))
-        
+
         self.state = np.zeros(n_reservoir)
         self.w_out = np.random.randn(n_reservoir) * 0.05
 
@@ -144,7 +145,7 @@ class NeuromorphicTrader:
 
         # Reservoir prediction
         win_prob = self.reservoir.predict(input_feats)
-        
+
         # Step LIF spiking neurons
         self.last_event_time += 1.0
         spikes = [n.step(dt=1.0, current_in=float(win_prob * 1.5), current_time=self.last_event_time) for n in self.neurons]

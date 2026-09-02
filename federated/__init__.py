@@ -1,7 +1,7 @@
 """Federated learning module initialization."""
 from federated.federated_learning import (
-    FederatedServer,
     FederatedClient,
+    FederatedServer,
     FederatedUpdate,
     ShamirSecretSharing,
 )

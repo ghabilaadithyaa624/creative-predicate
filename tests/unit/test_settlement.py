@@ -11,7 +11,7 @@ These cover two classes of bug:
 """
 import pytest
 
-from trading.paper_engine import PaperTradingEngine, SurvivalMode, BetStatus
+from trading.paper_engine import BetStatus, PaperTradingEngine, SurvivalMode
 from trading.settlement import SettlementEngine
 
 
@@ -197,8 +197,8 @@ def test_monte_carlo_produces_real_dispersion():
     reorder the same wins and losses, so every iteration ended at an identical
     bankroll: std 0, ruin probability 0. Outcomes must be redrawn per bet.
     """
-    from backtest.simulator import BacktestEngine
     from backtest.historical_data import HistoricalDataLoader
+    from backtest.simulator import BacktestEngine
 
     df = HistoricalDataLoader.generate_synthetic_data(num_records=150)
     engine = BacktestEngine(initial_bankroll=100.0)
@@ -220,8 +220,8 @@ def test_monte_carlo_produces_real_dispersion():
 
 def test_walk_forward_still_deterministic():
     """A plain backtest must keep replaying the fixed result column exactly."""
-    from backtest.simulator import BacktestEngine
     from backtest.historical_data import HistoricalDataLoader
+    from backtest.simulator import BacktestEngine
 
     df = HistoricalDataLoader.generate_synthetic_data(num_records=120)
     engine = BacktestEngine(initial_bankroll=100.0)

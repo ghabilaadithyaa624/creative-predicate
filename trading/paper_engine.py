@@ -1,12 +1,12 @@
 """
 Paper trading simulation engine for autonomous agents.
 """
+import json
+import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Dict, List, Optional, Any, Callable
-import json
-import uuid
+from typing import Any, Callable, Dict, List, Optional
 
 from loguru import logger
 
@@ -110,7 +110,7 @@ class AgentState:
         won_bets = [b for b in settled_bets if b.status == BetStatus.WON]
         lost_bets = [b for b in settled_bets if b.status == BetStatus.LOST]
         pending_bets = [b for b in self.bets if b.status == BetStatus.PENDING]
-        
+
         win_rate = (len(won_bets) / len(settled_bets)) if settled_bets else 0.0
         total_staked = sum(b.stake for b in self.bets)
         # PnL and drawdown are measured on equity, so open positions do not
@@ -119,7 +119,7 @@ class AgentState:
         roi = (total_profit / self.initial_bankroll * 100.0) if self.initial_bankroll > 0 else 0.0
 
         current_drawdown = (self.peak_bankroll - self.equity) / self.peak_bankroll if self.peak_bankroll > 0 else 0.0
-        
+
         # Calculate profit factor
         gross_profit = sum(b.pnl for b in won_bets)
         gross_loss = abs(sum(b.pnl for b in lost_bets))
@@ -138,6 +138,7 @@ class AgentState:
             "total_profit": round(total_profit, 2),
             "roi_percent": round(roi, 2),
             "total_bets": total_bets,
+            "total_staked": round(total_staked, 2),
             "settled_bets": len(settled_bets),
             "pending_bets": len(pending_bets),
             "won_bets": len(won_bets),
@@ -267,7 +268,7 @@ class PaperTradingEngine:
             "equity": agent.equity,
             "event": f"Placed bet {bet_id} on {event} (${stake:.2f})"
         })
-        
+
         self._emit("bet_placed", bet.to_dict())
         return bet
 

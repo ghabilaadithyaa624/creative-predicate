@@ -2,7 +2,7 @@
 Fast in-memory TTL caching layer.
 """
 from datetime import datetime, timedelta
-from typing import Dict, Any, Optional
+from typing import Any, Dict, Optional
 
 
 class CacheStore:

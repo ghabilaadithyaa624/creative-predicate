@@ -16,7 +16,7 @@ def test_expected_value_and_edge():
     # 55% true win prob at 2.0 odds
     ev = OddsAnalyzer.calculate_expected_value(true_probability=0.55, decimal_odds=2.0)
     assert round(ev, 2) == 0.10  # 10% expected return
-    
+
     edge = OddsAnalyzer.calculate_edge(true_probability=0.55, decimal_odds=2.0)
     assert round(edge, 2) == 0.05  # 5% edge over 50% implied
 

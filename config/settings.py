@@ -1,10 +1,11 @@
 """
 Global settings and environment configuration.
 """
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-import os
+
 import yaml
 
 
@@ -42,15 +43,15 @@ class Settings:
     base_dir: Path = field(default_factory=lambda: Path(__file__).resolve().parent.parent)
     data_dir: Path = field(default_factory=lambda: Path(__file__).resolve().parent.parent / "data")
     logs_dir: Path = field(default_factory=lambda: Path(__file__).resolve().parent.parent / "logs")
-    
+
     agent: AgentConfig = field(default_factory=AgentConfig)
     risk: RiskConfig = field(default_factory=RiskConfig)
     vision: VisionConfig = field(default_factory=VisionConfig)
-    
+
     api_host: str = "0.0.0.0"
     api_port: int = 8000
     dashboard_port: int = 8501
-    
+
     database_url: str = "sqlite:///data/trading.db"
     redis_url: str = "redis://localhost:6379/0"
 
@@ -70,19 +71,19 @@ class Settings:
     def load_from_yaml(cls, yaml_path: Optional[str | Path] = None) -> "Settings":
         settings = cls()
         settings.ensure_directories()
-        
+
         path = Path(yaml_path) if yaml_path else settings.base_dir / "config" / "agents.yaml"
         if path.exists():
             with open(path, "r", encoding="utf-8") as f:
                 data: Dict[str, Any] = yaml.safe_load(f) or {}
-                
+
             if "agent" in data:
                 settings.agent = AgentConfig(**data["agent"])
             if "risk" in data:
                 settings.risk = RiskConfig(**data["risk"])
             if "vision" in data:
                 settings.vision = VisionConfig(**data["vision"])
-                
+
         return settings
 
 

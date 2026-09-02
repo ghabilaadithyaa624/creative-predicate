@@ -1,9 +1,9 @@
 """Blockchain module initialization."""
 from blockchain.decentralized_consensus import (
     BlockchainConsensus,
+    ConsensusVote,
     OffChainConsensusBFT,
     Proposal,
-    ConsensusVote,
 )
 
 __all__ = [

@@ -2,16 +2,17 @@
 Interactive Streamlit Dashboard for Autonomous Paper Trading Simulation & Analysis.
 """
 from datetime import datetime, timedelta
-import pandas as pd
+
 import numpy as np
+import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from trading.paper_engine import PaperTradingEngine, SurvivalMode, BetStatus
 from analysis.scraper import MarketScraper
-from backtest.simulator import BacktestEngine
 from backtest.historical_data import HistoricalDataLoader
+from backtest.simulator import BacktestEngine
+from trading.paper_engine import BetStatus, PaperTradingEngine, SurvivalMode
 
 
 def run_dashboard(port: int = 8501):
@@ -91,14 +92,14 @@ def run_dashboard(port: int = 8501):
     with tab_live:
         if current_agent:
             metrics = current_agent.calculate_metrics()
-            
+
             c1, c2, c3, c4, c5 = st.columns(5)
             c1.metric("Current Bankroll", f"${metrics['current_bankroll']:.2f}", f"{metrics['roi_percent']:+.1f}%")
             c2.metric("Win Rate", f"{metrics['win_rate']*100:.1f}%", f"{metrics['won_bets']}W / {metrics['lost_bets']}L")
             c3.metric("Profit / Loss", f"${metrics['total_profit']:+.2f}")
             c4.metric("Max Drawdown", f"{metrics['current_drawdown']*100:.1f}%")
-            
-            status_html = '<span class="alive-badge">● ACTIVE (ALIVE)</span>' if metrics['is_alive'] else f'<span class="dead-badge">● TERMINATED</span>'
+
+            status_html = '<span class="alive-badge">● ACTIVE (ALIVE)</span>' if metrics['is_alive'] else '<span class="dead-badge">● TERMINATED</span>'
             c5.markdown(f"**Status**<br>{status_html}", unsafe_allow_html=True)
 
             st.divider()
@@ -113,7 +114,7 @@ def run_dashboard(port: int = 8501):
                         m = markets[0]
                         stake = round(current_agent.current_bankroll * 0.05, 2)
                         if stake >= 1.0:
-                            b = engine.place_bet(
+                            engine.place_bet(
                                 agent_name=selected_agent_name,
                                 market=m.source,
                                 event=m.event_name,
@@ -151,7 +152,7 @@ def run_dashboard(port: int = 8501):
                     line_color="gray",
                     annotation_text="Initial Capital",
                 )
-                
+
                 # Death threshold line
                 thresh_ratio = 0.8 if current_agent.survival_mode == SurvivalMode.CONSERVATIVE else (1.0 if current_agent.survival_mode == SurvivalMode.TERMINAL else 0.5)
                 fig_equity.add_hline(

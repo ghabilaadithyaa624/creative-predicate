@@ -5,10 +5,11 @@ and robust classical quadratic Hamiltonian optimization fallbacks.
 """
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Callable, Dict, List, Optional, Tuple, Any
+from typing import Any, Callable, Dict, List, Optional, Tuple
+
 import numpy as np
-from scipy.optimize import minimize
 from loguru import logger
+from scipy.optimize import minimize
 
 
 @dataclass
@@ -132,9 +133,9 @@ class QuantumMachineLearning:
         # Feature angle encoding into Bloch sphere rotations
         x = features[:self.n_qubits] if len(features) >= self.n_qubits else np.pad(features, (0, self.n_qubits - len(features)))
         angles = np.pi * np.tanh(x)
-        
+
         state = np.cos(angles) + 1j * np.sin(angles)
-        
+
         # Apply layer rotations
         for layer in range(self.n_layers):
             rot = np.exp(1j * self.weights[layer])

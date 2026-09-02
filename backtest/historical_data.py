@@ -3,7 +3,8 @@ Historical dataset loader and synthetic dataset generator for backtesting.
 """
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional, List, Dict
+from typing import Dict, List, Optional
+
 import numpy as np
 import pandas as pd
 
@@ -33,7 +34,7 @@ class HistoricalDataLoader:
         """
         start = start_date or (datetime.now() - timedelta(days=90))
         records: List[Dict] = []
-        
+
         events_pool = [
             ("Lakers vs Warriors", "basketball"),
             ("Celtics vs Bucks", "basketball"),
@@ -49,20 +50,20 @@ class HistoricalDataLoader:
         for i in range(num_records):
             timestamp = start + timedelta(hours=i * 4)
             ev_name, cat = events_pool[i % len(events_pool)]
-            
+
             # Underlying true win probability between 0.30 and 0.75
             true_prob = float(np.random.uniform(0.35, 0.70))
-            
+
             # Market implied probability with some noise & vig
             noise = float(np.random.normal(-base_edge_mean, 0.05))
             market_implied = np.clip(true_prob + noise, 0.20, 0.85)
-            
+
             # Add 4% bookmaker vig
             decimal_odds = round(1.0 / (market_implied * 1.04), 2)
-            
+
             # Realized outcome based on true probability
             won = bool(np.random.random() < true_prob)
-            
+
             records.append({
                 "timestamp": timestamp.isoformat(),
                 "event": f"{ev_name} #{i+1}",

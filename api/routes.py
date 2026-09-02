@@ -3,16 +3,17 @@ FastAPI route definitions for the Autonomous Trading Agent System.
 """
 import asyncio
 import os
-from typing import Dict, List, Any
+from typing import Any, Dict, List
+
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 
-from api.models import AgentCreateRequest, PlaceBetRequest, SettleBetRequest, BacktestRunRequest
-from api.websocket import ConnectionManager
-from trading.paper_engine import PaperTradingEngine, SurvivalMode
 from analysis.scraper import MarketScraper
-from backtest.simulator import BacktestEngine
+from api.models import AgentCreateRequest, BacktestRunRequest, PlaceBetRequest, SettleBetRequest
+from api.websocket import ConnectionManager
 from backtest.historical_data import HistoricalDataLoader
+from backtest.simulator import BacktestEngine
+from trading.paper_engine import PaperTradingEngine, SurvivalMode
 
 
 def create_app(engine: PaperTradingEngine) -> FastAPI:
@@ -98,7 +99,7 @@ def create_app(engine: PaperTradingEngine) -> FastAPI:
             mode = SurvivalMode(req.survival_mode.lower())
         except ValueError:
             mode = SurvivalMode.AGGRESSIVE
-        
+
         agent = engine.create_agent(req.name, req.initial_bankroll, mode)
         return {"status": "created", "agent": agent.calculate_metrics()}
 

@@ -1,8 +1,8 @@
 """Analysis module initialization."""
+from analysis.data_sources import AggregatedMarketFeed, BaseDataSource, PolymarketSource, SimulatedSportsSource
 from analysis.odds_analyzer import OddsAnalyzer
 from analysis.probability_models import ProbabilityEstimator
-from analysis.scraper import MarketScraper, MarketData
-from analysis.data_sources import BaseDataSource, PolymarketSource, SimulatedSportsSource, AggregatedMarketFeed
+from analysis.scraper import MarketData, MarketScraper
 
 __all__ = [
     "OddsAnalyzer",

@@ -5,7 +5,8 @@ Uses PyTorch neural networks, transformers, and tree-based ensembles.
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
 import pandas as pd
 from loguru import logger
@@ -20,8 +21,8 @@ except ImportError:
     nn = Any
 
 try:
-    from sklearn.ensemble import GradientBoostingRegressor, RandomForestClassifier
     import joblib
+    from sklearn.ensemble import GradientBoostingRegressor, RandomForestClassifier
     HAS_SKLEARN = True
 except ImportError:
     HAS_SKLEARN = False
@@ -131,7 +132,7 @@ class EnsembleProbabilityModel:
         self.models_dir = Path(models_dir)
         self.models_dir.mkdir(parents=True, exist_ok=True)
         self.sentiment_analyzer = SentimentAnalyzer()
-        
+
         self.model_weights = {
             'neural': 0.35,
             'gb': 0.35,
@@ -143,7 +144,7 @@ class EnsembleProbabilityModel:
         odds = float(market_data.get('odds', 2.0))
         vol = float(market_data.get('volume', 10000.0))
         sent = float(market_data.get('sentiment', 0.0))
-        
+
         sports = ['basketball', 'football', 'hockey', 'baseball', 'soccer', 'tennis', 'other']
         sport = str(market_data.get('category', market_data.get('sport', 'other'))).lower()
         sport_enc = [1.0 if s == sport else 0.0 for s in sports]
@@ -184,10 +185,10 @@ class EnsembleProbabilityModel:
 
         # Model 1: Implied with favorite-longshot adjustment
         p_neural = np.clip(implied_p + (0.03 if implied_p > 0.55 else -0.02) + (sent * 0.05), 0.02, 0.98)
-        
+
         # Model 2: Momentum & volume flow model
         p_gb = np.clip(implied_p * (1.02 if vol > 50000 else 0.98), 0.02, 0.98)
-        
+
         # Model 3: Prior Bayesian anchor
         p_rf = np.clip(0.5 * implied_p + 0.5 * 0.50, 0.02, 0.98)
 

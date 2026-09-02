@@ -1,5 +1,5 @@
 """Feeds module initialization."""
-from feeds.websocket_manager import WebSocketFeedManager, MarketUpdate, ArbitrageDetector
+from feeds.websocket_manager import ArbitrageDetector, MarketUpdate, WebSocketFeedManager
 
 __all__ = [
     "WebSocketFeedManager",

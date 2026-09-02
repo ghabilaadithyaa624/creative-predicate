@@ -2,8 +2,9 @@
 Unit tests for Paper Trading Engine and Bet Manager.
 """
 import pytest
-from trading.paper_engine import PaperTradingEngine, SurvivalMode, BetStatus
+
 from trading.bet_manager import BetManager, SizingConfig
+from trading.paper_engine import BetStatus, PaperTradingEngine, SurvivalMode
 from trading.performance import PerformanceAnalyzer
 
 

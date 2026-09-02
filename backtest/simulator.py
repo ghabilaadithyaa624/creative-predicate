@@ -3,10 +3,12 @@ Historical backtesting and Monte Carlo simulation engine.
 """
 from dataclasses import dataclass
 from datetime import datetime
-from typing import List, Dict, Optional, Callable, Any
+from typing import Any, Callable, Dict, List, Optional
+
 import numpy as np
 import pandas as pd
 from loguru import logger
+
 from trading.performance import PerformanceAnalyzer
 
 

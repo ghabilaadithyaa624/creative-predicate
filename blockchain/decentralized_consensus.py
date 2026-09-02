@@ -2,11 +2,12 @@
 Blockchain-based decentralized consensus and Byzantine Fault Tolerant (BFT) agent voting.
 Implements on-chain/off-chain proposal lifecycle, stake-weighted voting, and reputation slashing.
 """
-from dataclasses import dataclass, field
-from datetime import datetime
 import hashlib
 import json
-from typing import Dict, List, Optional, Any
+from dataclasses import dataclass, field
+from datetime import datetime
+from typing import Any, Dict, List, Optional
+
 from loguru import logger
 
 
@@ -59,7 +60,7 @@ class BlockchainConsensus:
     ) -> str:
         payload = f"{market}:{selection}:{datetime.now().timestamp()}"
         proposal_id = hashlib.sha256(payload.encode()).hexdigest()[:16]
-        
+
         p = Proposal(
             proposal_id=proposal_id,
             proposer=proposer_address,
@@ -160,6 +161,8 @@ class OffChainConsensusBFT:
             "proposal_id": proposal_id,
             "finalized": finalized,
             "approved": approved,
+            "yes_votes": yes_count,
+            "no_votes": no_count,
             "total_votes": len(votes),
             "threshold": self.threshold,
         }

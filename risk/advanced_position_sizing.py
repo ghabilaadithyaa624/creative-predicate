@@ -5,10 +5,11 @@ Advanced position sizing algorithms:
 - Confidence-Adjusted Kelly for prediction uncertainty
 - Portfolio Kelly allocation across correlated bets
 """
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
 import numpy as np
-from scipy.optimize import minimize_scalar, minimize
 from loguru import logger
+from scipy.optimize import minimize, minimize_scalar
 
 
 class PositionSizer:

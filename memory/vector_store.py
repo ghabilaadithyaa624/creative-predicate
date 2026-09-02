@@ -1,8 +1,9 @@
 """
 Vector store interface for semantic memory and contextual event lookups.
 """
-from typing import List, Dict, Any, Optional
 import math
+from typing import Any, Dict, List, Optional
+
 from loguru import logger
 
 try:

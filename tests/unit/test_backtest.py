@@ -1,8 +1,8 @@
 """
 Unit tests for historical backtester and Monte Carlo simulator.
 """
-from backtest.simulator import BacktestEngine
 from backtest.historical_data import HistoricalDataLoader
+from backtest.simulator import BacktestEngine
 
 
 def test_backtest_execution():

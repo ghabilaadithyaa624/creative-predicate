@@ -1,7 +1,7 @@
 """
 Knowledge graph representing market entities, correlations, and relationships.
 """
-from typing import Dict, List, Set, Any
+from typing import Any, Dict, List, Set
 
 
 class MarketKnowledgeGraph:

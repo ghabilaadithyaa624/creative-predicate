@@ -1,7 +1,8 @@
 """
 Performance analytics and quantitative metrics calculations.
 """
-from typing import Dict, List, Any
+from typing import Any, Dict, List
+
 import numpy as np
 import pandas as pd
 
@@ -32,11 +33,22 @@ class PerformanceAnalyzer:
 
         df = pd.DataFrame(bets)
         total_bets = len(df)
-        
-        # Calculate winning / losing
-        won_bets = df[df.get("status", "") == "won"] if "status" in df.columns else df[df.get("won", False) == True]
-        lost_bets = df[df.get("status", "") == "lost"] if "status" in df.columns else df[df.get("won", False) == False]
-        
+
+        # Calculate winning / losing.
+        # The `won` fallback is coerced to a real boolean mask: comparing a
+        # possibly-missing column against True/False silently yields a scalar
+        # (not a mask) when the column is absent, which raises on indexing.
+        if "status" in df.columns:
+            won_bets = df[df["status"] == "won"]
+            lost_bets = df[df["status"] == "lost"]
+        elif "won" in df.columns:
+            won_mask = df["won"].fillna(False).astype(bool)
+            won_bets = df[won_mask]
+            lost_bets = df[~won_mask]
+        else:
+            won_bets = df.iloc[0:0]
+            lost_bets = df.iloc[0:0]
+
         win_count = len(won_bets)
         loss_count = len(lost_bets)
         win_rate = (win_count / total_bets) if total_bets > 0 else 0.0
@@ -61,7 +73,7 @@ class PerformanceAnalyzer:
         if len(returns) > 1 and returns.std() > 0:
             excess_returns = returns - (risk_free_rate / 252.0)
             sharpe_ratio = float(np.sqrt(252.0) * excess_returns.mean() / returns.std())
-            
+
             # Downside deviation for Sortino
             downside_returns = returns[returns < 0]
             downside_std = downside_returns.std()

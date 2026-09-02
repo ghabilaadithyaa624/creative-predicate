@@ -1,17 +1,19 @@
 """
 Base autonomous agent with lifecycle, event observation, and perception-reason-action loops.
 """
+import asyncio
+import uuid
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Dict, List, Optional, Any, Callable
-import uuid
-import asyncio
+from typing import Any, Callable, Dict, List, Optional
+
 from loguru import logger
 
-from agents.survival_manager import SurvivalRule, SurvivalMode
-from trading.paper_engine import PaperTradingEngine, AgentState as PaperAgentState, Bet
+from agents.survival_manager import SurvivalMode, SurvivalRule
+from trading.paper_engine import AgentState as PaperAgentState
+from trading.paper_engine import Bet, PaperTradingEngine
 
 
 class AgentStatus(str, Enum):
@@ -48,13 +50,13 @@ class BaseAgent(ABC):
         self.survival_rule = survival_rule or SurvivalRule.from_mode(survival_mode)
         self.tick_interval = tick_interval
         self.config = config or {}
-        
+
         self.status = AgentStatus.INITIALIZING
         self.history: List[Dict[str, Any]] = []
         self._observers: List[Callable[[str, Dict[str, Any]], None]] = []
         self._running = False
         self._task: Optional[asyncio.Task] = None
-        
+
         # Register inside the paper trading engine
         self.paper_state = self.trading_engine.create_agent(
             name=self.name,
@@ -163,13 +165,13 @@ class BaseAgent(ABC):
         try:
             # 2. Perceive
             perception = await self.perceive()
-            
+
             # 3. Reason
             decisions = await self.reason(perception)
-            
+
             # 4. Act
             placed_bets = await self.act(decisions)
-            
+
             # 5. Record
             cycle_record = {
                 "timestamp": datetime.now().isoformat(),
@@ -183,7 +185,7 @@ class BaseAgent(ABC):
             self.history.append(cycle_record)
             self._notify_observers("cycle_completed", cycle_record)
             return True
-            
+
         except Exception as e:
             logger.error(f"Cycle failed for agent '{self.name}': {e}")
             return False

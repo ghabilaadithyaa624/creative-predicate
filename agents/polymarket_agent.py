@@ -1,16 +1,17 @@
 """
 Specialized autonomous agent for prediction markets (e.g. Polymarket).
 """
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
+
 from loguru import logger
 
-from agents.base_agent import BaseAgent, AgentStatus
+from agents.base_agent import AgentStatus, BaseAgent
 from agents.survival_manager import SurvivalMode, SurvivalRule
-from trading.paper_engine import PaperTradingEngine, Bet
-from trading.bet_manager import BetManager, SizingConfig
-from analysis.scraper import MarketScraper, MarketData
 from analysis.odds_analyzer import OddsAnalyzer
 from analysis.probability_models import ProbabilityEstimator
+from analysis.scraper import MarketData, MarketScraper
+from trading.bet_manager import BetManager, SizingConfig
+from trading.paper_engine import Bet, PaperTradingEngine
 
 
 class PolymarketAgent(BaseAgent):

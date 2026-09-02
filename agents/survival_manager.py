@@ -4,7 +4,8 @@ Circuit breaker and survival manager for autonomous agents.
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Optional, Tuple, Dict, Any
+from typing import Any, Dict, Optional, Tuple
+
 from loguru import logger
 
 

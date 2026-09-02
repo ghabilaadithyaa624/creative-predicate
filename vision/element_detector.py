@@ -1,7 +1,7 @@
 """
 Element detector for betting UI components.
 """
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
 
 class ElementDetector:

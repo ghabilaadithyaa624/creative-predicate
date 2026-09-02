@@ -1,7 +1,8 @@
 """
 Odds and Expected Value (EV) mathematical analysis toolkit.
 """
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
 
 

@@ -2,7 +2,8 @@
 Unified data sources interface for sportsbooks and prediction platforms.
 """
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any, Optional
+from typing import Any, Dict, List, Optional
+
 from analysis.scraper import MarketData, MarketScraper
 
 

@@ -1,8 +1,9 @@
 """
 WebSocket connection manager for real-time telemetry streaming.
 """
-from typing import List, Dict, Any
 import json
+from typing import Any, Dict, List
+
 from loguru import logger
 
 try:

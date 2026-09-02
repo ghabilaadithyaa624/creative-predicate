@@ -3,11 +3,12 @@ Real-time WebSocket feeds and multi-exchange data feeds manager.
 Includes cross-exchange real-time arbitrage detection.
 """
 import asyncio
+import json
 from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime
-import json
-from typing import Callable, Dict, List, Optional, Any
+from typing import Any, Callable, Dict, List, Optional
+
 from loguru import logger
 
 try:
@@ -62,7 +63,7 @@ class WebSocketFeedManager:
             ("Federal Reserve cuts rate at next FOMC", 1.45, 2.80),
         ]
         exchanges = ["polymarket", "betfair", "dex_prediction"]
-        
+
         for name, yes_base, no_base in events[:count]:
             for ex in exchanges:
                 drift = random.uniform(-0.06, 0.06)

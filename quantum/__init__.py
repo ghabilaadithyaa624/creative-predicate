@@ -1,7 +1,7 @@
 """Quantum module initialization."""
 from quantum.quantum_portfolio_optimizer import (
-    QuantumPortfolioOptimizer,
     QuantumMachineLearning,
+    QuantumPortfolioOptimizer,
     QuantumResult,
 )
 

@@ -1,7 +1,8 @@
 """
 Machine learning and statistical probability estimation models.
 """
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
 import numpy as np
 
 
@@ -56,7 +57,7 @@ class ProbabilityEstimator:
 
         # Weighted blend
         estimated_p = base_p + bias_adj + momentum_shift + sentiment_shift
-        
+
         # Bound probability strictly between 0.01 and 0.99
         return float(np.clip(estimated_p, 0.01, 0.99))
 

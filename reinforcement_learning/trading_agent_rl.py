@@ -2,9 +2,10 @@
 Deep Reinforcement Learning for Trading Strategy Optimization.
 Implements custom TradingEnvironment, PPO (Proximal Policy Optimization), and Soft Actor-Critic (SAC).
 """
-from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple, Any
 import random
+from dataclasses import dataclass
+from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
 from loguru import logger
 
@@ -48,12 +49,12 @@ class TradingEnvironment:
         self.initial_bankroll = initial_bankroll
         self.transaction_cost = transaction_cost
         self.max_positions = max_positions
-        
+
         self.current_step = 0
         self.bankroll = initial_bankroll
         self.positions: List[Dict[str, Any]] = []
         self.history: List[float] = [initial_bankroll]
-        
+
         self.state_dim = 25
         self.action_dim = max_positions
 

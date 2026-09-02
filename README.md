@@ -1,71 +1,114 @@
-# 🤖 Autonomous Paper Trading & Institutional Intelligence Agent Framework
+# Creative Predicate
 
-A production-ready autonomous trading and strategy analysis framework featuring **Deep Learning Probability Estimation**, **Multi-Agent Swarm Consensus**, **Reinforcement Learning (PPO)**, **Cross-Exchange Arbitrage Detection**, **Monte Carlo Extreme Risk & VaR/CVaR Modeling**, and **Decentralized Blockchain-Based Voting**.
+A **paper-trading research sandbox** for prediction-market and sports-betting strategy evaluation.
 
----
+It simulates autonomous agents that estimate probabilities, size positions with fractional Kelly, and settle bets against a ledger with circuit-breaker risk controls. Everything runs on simulated capital.
 
-## 🏗️ Next-Generation System Architecture
-
-```
-                       AUTONOMOUS TRADING ORGANISM
-                                     │
-         ┌───────────────────────────┼───────────────────────────┐
-         ▼                           ▼                           ▼
-   SWARM & CONSENSUS          DECISION ENGINE              RL & ML MODELS
-   - Scout / Analyst / Exec   - Fractional Kelly           - PyTorch Deep Net
-   - BFT Voting Engine        - Optimal f & Leverage Space - Sentiment NLP
-   - Blockchain Slashing      - Portfolio Kelly            - PPO & SAC Agents
-         │                           │                           │
-         ▼                           ▼                           ▼
-   FEEDS & WEBSOCKET          EXTREME RISK ENGINE          PAPER TRADING
-   - Live Orderbook Stream    - Monte Carlo (100k paths)   - Multi-Bot Ledger
-   - Cross-Exchange Arbitrage - VaR & CVaR (95%/99%)       - Auto Settlement
-   - Polymarket Gamma API     - Tail Risk & Stress Testing - Circuit Breakers
-```
+> **This is a research sandbox, not a trading system.**
+> - It never connects to a broker or exchange and cannot place a real order.
+> - The perception layer falls back to a small **synthetic market feed** when the Polymarket API is unreachable, which is most of the time.
+> - Backtest and Monte Carlo figures describe *simulated* outcomes under assumptions you supply. They are not evidence of edge in a live market.
 
 ---
 
-## 🌟 Comprehensive Module Map
+## Quick start
 
-| Layer | Files | Description |
-| :--- | :--- | :--- |
-| **Swarm Intelligence** | [`coordinator.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/swarm/coordinator.py) | Dynamic agent registration, role specialization (`Scout`, `Analyst`, `Executor`, `Risk`), confidence-weighted proposal voting, and emergent consensus. |
-| **Deep Learning & ML** | [`probability_engine.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/ml_models/probability_engine.py) | PyTorch deep probability networks, financial news sentiment NLP analyzer, and multi-model ensemble (Neural + Gradient Boosting + Random Forest). |
-| **Reinforcement Learning** | [`trading_agent_rl.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/reinforcement_learning/trading_agent_rl.py) | Gym-compatible `TradingEnvironment`, `ActorCriticNetwork`, and `PPOTrader` for learning optimal dynamic position sizing directly from market rewards. |
-| **Advanced Position Sizing** | [`advanced_position_sizing.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/risk/advanced_position_sizing.py) | Fractional Kelly, Ralph Vince's Optimal f (maximizing Terminal Wealth Relative), and uncertainty-adjusted sizing based on prediction variance. |
-| **Extreme Risk & Stress Testing** | [`extreme_risk_simulation.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/monte_carlo/extreme_risk_simulation.py) | Parametric/non-parametric Monte Carlo paths, Value at Risk (VaR 95/99), Conditional VaR (Expected Shortfall), and Black Swan crash stress testing. |
-| **Real-time Feeds & Arbitrage** | [`websocket_manager.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/feeds/websocket_manager.py) | Multi-exchange streaming WebSocket manager and real-time cross-exchange arbitrage detector ($\sum \frac{1}{\text{odds}_i} < 1.0$). |
-| **Decentralized Consensus** | [`decentralized_consensus.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/blockchain/decentralized_consensus.py) | On-chain proposal creation, stake-weighted voting, reputation slashing, and Byzantine Fault Tolerant (BFT) off-chain voting ($N \ge 3f + 1$). |
-| **Multi-Channel Alerts** | [`alert_manager.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/notifications/alert_manager.py) | Multi-channel async alerts for Discord, Telegram, Slack, and Console on trade executions, circuit breaker triggers, or swarm consensus. |
-| **Paper Engine & Ledger** | [`paper_engine.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/trading/paper_engine.py) | Multi-agent paper ledger, equity progression, balance locking, and circuit breaker survival enforcement (`Aggressive`, `Conservative`, `Terminal`). |
-| **Dashboard & API** | [`dashboard/app.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/dashboard/app.py)<br>[`api/routes.py`](file:///C:/Users/GHABILAADITHYAA%20P/Downloads/creative%20predictions/api/routes.py) | Streamlit live monitor, backtest lab, market analyzer, and FastAPI REST/WebSocket telemetry endpoints. |
-
----
-
-## 🚀 Quick Execution Guide
-
-### 1. Run Complete Test Suite
 ```bash
-python tests/run_tests.py
-```
-*(All 20 unit and async integration test suites pass with 0 failures).*
+pip install -e ".[dev]"     # core runtime + test tooling
+python main.py init         # create data/logs dirs and a sample dataset
 
-### 2. Run Autonomous Agent Simulation
-```bash
-python main.py run --name AlphaBot --bankroll 100.0 --mode aggressive --rounds 5
-```
-
-### 3. Run Multi-Agent Tournament
-```bash
+python main.py backtest              # deterministic walk-forward
+python main.py backtest --monte-carlo # bootstrap distribution
 python main.py simulate-all --rounds 5
+pytest tests/                        # 39 tests
 ```
 
-### 4. Run Monte Carlo Backtesting
-```bash
-python main.py backtest --monte-carlo
+Installing the package also provides a `creative-predicate` console script equivalent to `python main.py`.
+
+### Optional extras
+
+The core install deliberately excludes heavy dependencies. Every optional stack is guarded by `try/except ImportError`, and CI runs the suite core-only to keep it that way.
+
+| Extra | Install | Enables |
+| :--- | :--- | :--- |
+| `api` | `pip install -e ".[api]"` | FastAPI REST + WebSocket telemetry |
+| `dashboard` | `pip install -e ".[dashboard]"` | Streamlit monitor |
+| `ml` | `pip install -e ".[ml]"` | scikit-learn ensembles, PyTorch nets, PPO |
+| `vision` | `pip install -e ".[vision]"` | Playwright + OCR browser agent |
+| `memory` | `pip install -e ".[memory]"` | Chroma vector store, Redis, SQLAlchemy |
+
+---
+
+## What actually runs
+
+These modules are wired into the CLI, the agents, and the API. They are the working system.
+
+| Module | Role |
+| :--- | :--- |
+| [`trading/paper_engine.py`](trading/paper_engine.py) | The ledger. Bets, stake locking, settlement, equity, drawdown, survival circuit breakers. |
+| [`trading/settlement.py`](trading/settlement.py) | Resolves open bets against registered outcomes or a seeded simulation. |
+| [`trading/bet_manager.py`](trading/bet_manager.py) | Fractional Kelly sizing and portfolio exposure caps. |
+| [`risk/advanced_position_sizing.py`](risk/advanced_position_sizing.py) | Optimal *f*, uncertainty-adjusted sizing. |
+| [`analysis/probability_models.py`](analysis/probability_models.py) | Fair-probability estimation (favourite–longshot correction). |
+| [`analysis/odds_analyzer.py`](analysis/odds_analyzer.py) | Odds conversion, vig removal, arbitrage detection. |
+| [`analysis/scraper.py`](analysis/scraper.py) | Polymarket Gamma API with synthetic fallback. |
+| [`backtest/simulator.py`](backtest/simulator.py) | Walk-forward backtest and bootstrap Monte Carlo. |
+| [`agents/`](agents/) | Perceive → reason → act loop for prediction-market and sports agents. |
+| [`api/routes.py`](api/routes.py) | REST endpoints and `/ws/telemetry` live event stream. |
+| [`dashboard/app.py`](dashboard/app.py) | Streamlit monitor, backtest lab, market analyzer. |
+
+### Experimental / not wired in
+
+These are self-contained implementations that **no entry point currently calls**. They are exercised by tests only. Treat them as research spikes, not features:
+
+`quantum/` (QAOA portfolio optimizer, VQC) · `neuromorphic/` (LIF neurons, echo-state reservoir) · `federated/` (Shamir secret sharing, FedAvg) · `blockchain/` (stake-weighted + BFT voting) · `swarm/` (role-based consensus) · `reinforcement_learning/` (PPO trader) · `vision/` (browser/OCR agent)
+
+---
+
+## Understanding the simulation
+
+Two knobs determine whether simulated results mean anything.
+
+**`edge_realisation`** (settlement) controls how much of an agent's claimed edge is real:
+
+```python
+settlement.auto_simulate_pending_resolutions(edge_realisation=1.0)  # forecast is perfectly correct
+settlement.auto_simulate_pending_resolutions(edge_realisation=0.0)  # forecast has no value; market is right
+settlement.auto_simulate_pending_resolutions(ground_truth={"Event": 0.35})  # score against reality
 ```
 
-### 5. Launch Interactive Dashboard
+At `1.0` you are measuring *"what if my model is exactly right?"* — an upper bound, not a forecast. Sweeping it down toward `0.0` shows how fast the strategy decays as the model degrades. **A strategy that only profits at `edge_realisation=1.0` has no margin for error.**
+
+**`resample_outcomes`** (backtest) controls whether outcomes are replayed or redrawn. Monte Carlo forces it on; a fixed `result` column replayed in shuffled order produces zero variance and a meaningless 0% ruin estimate.
+
+### Why the default agent run places no bets
+
+`python main.py run` typically finishes with an empty leaderboard. This is correct. Against the synthetic feed the largest genuine edge is about **0.68%**, below the 2% `min_edge` floor, so the agent declines to trade.
+
+Earlier versions bet constantly because `estimate_fair_probability` returned a fabricated ±2.5% edge based on whether `int(volume_24h)` was even. That noise was removed. Producing real activity requires a real data source, not a looser threshold.
+
+---
+
+## Development
+
 ```bash
-streamlit run dashboard/app.py
+make install    # core + dev
+make test
+make lint
+make fmt
 ```
+
+CI runs on Python 3.10/3.11/3.12: lint, the pytest suite, the legacy `tests/run_tests.py` runner, and a CLI smoke test over every documented command.
+
+## Known gaps
+
+Honest inventory of what is still missing:
+
+- **Perception is mostly synthetic.** The live API path is brittle and usually falls back to six hard-coded markets.
+- **No persistence.** `scripts/setup_db.py` creates SQLite tables nothing writes to. CLI, API and dashboard each build a separate in-memory engine and cannot see each other's agents.
+- **The probability model is thin.** A hand-tuned favourite–longshot correction, not a fitted model.
+- **~1,000 lines are unwired** (see *Experimental* above).
+
+## License
+
+MIT

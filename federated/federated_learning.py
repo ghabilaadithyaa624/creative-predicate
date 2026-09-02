@@ -8,7 +8,8 @@ Implements:
 """
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
 from loguru import logger
 
@@ -100,7 +101,7 @@ class FederatedServer:
             new_weights[key] = weighted_sum
 
         self.global_weights = new_weights
-        
+
         avg_acc = float(np.mean([u.metrics.get("accuracy", 0.70) for u in updates]))
         avg_loss = float(np.mean([u.metrics.get("loss", 0.25) for u in updates]))
 
@@ -138,7 +139,7 @@ class FederatedClient:
         for key, w in global_weights.items():
             # Simulated gradient step from local market observations
             gradient = np.random.randn(*w.shape) * 0.01
-            
+
             if add_differential_privacy:
                 # Gaussian Mechanism differential privacy noise calibration
                 sigma = (1.0 / self.privacy_epsilon) * 0.002

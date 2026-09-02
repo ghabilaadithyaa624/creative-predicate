@@ -8,6 +8,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional
+
 import numpy as np
 from loguru import logger
 
@@ -56,7 +57,7 @@ class SwarmCoordinator:
         self.consensus_threshold = consensus_threshold
         self.min_agents = min_agents_for_consensus
         self.specialization = specialization_enabled
-        
+
         self.agent_performance: Dict[str, Dict[str, float]] = defaultdict(
             lambda: {'accuracy': 0.55, 'trades': 0, 'profit': 0.0}
         )
@@ -147,7 +148,7 @@ class SwarmCoordinator:
         consensus = self.consensus_pool[consensus_id]
         total_weight = sum(self._calculate_vote_weight(aid) for aid in consensus.votes.keys())
         weighted_sum = sum(vote for vote in consensus.votes.values())
-        
+
         consensus_prob = (weighted_sum / total_weight) if total_weight > 0 else 0.5
         votes_array = np.array(list(consensus.votes.values()))
         agreement = 1.0 - (float(np.std(votes_array)) if len(votes_array) > 1 else 0.0)

@@ -4,10 +4,11 @@ Includes Value at Risk (VaR), Conditional Value at Risk (CVaR / Expected Shortfa
 Stress Scenarios (Black Swan / Crash testing), and Probability of Ruin.
 """
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple, Any, Callable
+from typing import Any, Callable, Dict, List, Optional, Tuple
+
 import numpy as np
-from scipy import stats
 from loguru import logger
+from scipy import stats
 
 
 @dataclass
@@ -121,7 +122,7 @@ class MonteCarloRiskEngine:
 
         excess = historical_returns - (0.02 / 252.0)
         sharpe = float(np.sqrt(252.0) * np.mean(excess) / max(1e-6, np.std(historical_returns)))
-        
+
         downside = historical_returns[historical_returns < 0]
         sortino = float(np.sqrt(252.0) * np.mean(excess) / max(1e-6, np.std(downside))) if len(downside) > 0 else sharpe
 

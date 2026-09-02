@@ -1,8 +1,8 @@
 """
 Database setup script.
 """
-import sys
 import sqlite3
+import sys
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -13,7 +13,7 @@ if str(ROOT_DIR) not in sys.path:
 def init_db():
     db_path = ROOT_DIR / "data" / "trading.db"
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    
+
     conn = sqlite3.connect(db_path)
     cur = conn.cursor()
 
