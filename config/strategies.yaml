@@ -1,0 +1,22 @@
+strategies:
+  kelly_criterion:
+    fraction: 0.25
+    min_edge: 0.02
+    max_bet_fraction: 0.05
+    description: "Fractional Kelly criterion with edge filtering"
+
+  value_betting:
+    edge_threshold: 0.04
+    confidence_min: 0.60
+    description: "Exploit discrepancies between ML predicted probability and implied market odds"
+
+  arbitrage:
+    min_profit_margin: 0.015
+    market_pairs:
+      - ["polymarket", "sports_book"]
+    description: "Exploit cross-market pricing inefficiencies with guaranteed profit"
+
+  momentum_sentiment:
+    lookback_periods: 12
+    sentiment_weight: 0.35
+    description: "Follow volume surges and market shifts in prediction markets"

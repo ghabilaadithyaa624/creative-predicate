@@ -1,0 +1,25 @@
+agent:
+  name: "AlphaBot"
+  initial_bankroll: 100.0
+  survival_mode: "aggressive"
+  tick_interval_seconds: 60.0
+  max_concurrent_bets: 5
+  markets:
+    - "polymarket"
+    - "sports"
+
+risk:
+  kelly_fraction: 0.25
+  min_edge: 0.02
+  max_bet_pct: 0.05
+  max_drawdown_pct: 0.30
+  max_consecutive_losses: 10
+  enable_circuit_breaker: true
+
+vision:
+  headless: true
+  viewport_width: 1920
+  viewport_height: 1080
+  ocr_languages:
+    - "en"
+  screenshot_on_decision: true

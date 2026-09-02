@@ -1,0 +1,501 @@
+timestamp,event,category,selection,odds,true_prob,implied_prob,result,volume
+2026-06-04T13:14:09.849884,Lakers vs Warriors #1,basketball,Selection A,2.43,0.4811,0.4115,True,38460
+2026-06-04T17:14:09.849884,Celtics vs Bucks #2,basketball,Selection A,1.5,0.6532,0.6667,True,356955
+2026-06-04T21:14:09.849884,Chiefs vs Ravens #3,football,Selection A,3.22,0.3572,0.3106,True,159078
+2026-06-05T01:14:09.849884,Eagles vs Cowboys #4,football,Selection A,2.01,0.5337,0.4975,True,152702
+2026-06-05T05:14:09.849884,BTC > $100K by month-end #5,crypto,Selection A,1.88,0.5641,0.5319,True,233474
+2026-06-05T09:14:09.849884,ETH Flipping SOL #6,crypto,Selection A,1.72,0.6248,0.5814,True,261974
+2026-06-05T13:14:09.849884,Fed cuts 25bps #7,politics,Selection A,1.8,0.5573,0.5556,True,41875
+2026-06-05T17:14:09.849884,US Unemployment drops #8,politics,Selection A,1.54,0.6821,0.6494,False,406114
+2026-06-05T21:14:09.849884,Lakers vs Warriors #9,basketball,Selection A,2.18,0.4566,0.4587,True,69798
+2026-06-06T01:14:09.849884,Celtics vs Bucks #10,basketball,Selection A,2.08,0.5233,0.4808,True,455566
+2026-06-06T05:14:09.849884,Chiefs vs Ravens #11,football,Selection A,2.77,0.4406,0.361,False,277888
+2026-06-06T09:14:09.849884,Eagles vs Cowboys #12,football,Selection A,2.19,0.4147,0.4566,False,389815
+2026-06-06T13:14:09.849884,BTC > $100K by month-end #13,crypto,Selection A,1.46,0.6788,0.6849,False,53361
+2026-06-06T17:14:09.849884,ETH Flipping SOL #14,crypto,Selection A,2.22,0.4186,0.4505,True,169411
+2026-06-06T21:14:09.849884,Fed cuts 25bps #15,politics,Selection A,1.94,0.486,0.5155,True,147657
+2026-06-07T01:14:09.849884,US Unemployment drops #16,politics,Selection A,1.99,0.5399,0.5025,True,403076
+2026-06-07T05:14:09.849884,Lakers vs Warriors #17,basketball,Selection A,2.56,0.3761,0.3906,False,387922
+2026-06-07T09:14:09.849884,Celtics vs Bucks #18,basketball,Selection A,2.46,0.3759,0.4065,True,66775
+2026-06-07T13:14:09.849884,Chiefs vs Ravens #19,football,Selection A,1.76,0.6521,0.5682,True,162381
+2026-06-07T17:14:09.849884,Eagles vs Cowboys #20,football,Selection A,1.97,0.4638,0.5076,False,322403
+2026-06-07T21:14:09.849884,BTC > $100K by month-end #21,crypto,Selection A,1.66,0.6605,0.6024,False,382784
+2026-06-08T01:14:09.849884,ETH Flipping SOL #22,crypto,Selection A,1.88,0.5464,0.5319,False,251959
+2026-06-08T05:14:09.849884,Fed cuts 25bps #23,politics,Selection A,1.99,0.533,0.5025,True,25400
+2026-06-08T09:14:09.849884,US Unemployment drops #24,politics,Selection A,1.78,0.5727,0.5618,True,259199
+2026-06-08T13:14:09.849884,Lakers vs Warriors #25,basketball,Selection A,1.57,0.6676,0.6369,False,122111
+2026-06-08T17:14:09.849884,Celtics vs Bucks #26,basketball,Selection A,3.53,0.3769,0.2833,True,88998
+2026-06-08T21:14:09.849884,Chiefs vs Ravens #27,football,Selection A,1.43,0.6754,0.6993,False,403799
+2026-06-09T01:14:09.849884,Eagles vs Cowboys #28,football,Selection A,2.17,0.4153,0.4608,False,274277
+2026-06-09T05:14:09.849884,BTC > $100K by month-end #29,crypto,Selection A,1.64,0.6326,0.6098,True,121688
+2026-06-09T09:14:09.849884,ETH Flipping SOL #30,crypto,Selection A,1.91,0.4995,0.5236,False,431757
+2026-06-09T13:14:09.849884,Fed cuts 25bps #31,politics,Selection A,4.81,0.3524,0.2079,True,68734
+2026-06-09T17:14:09.849884,US Unemployment drops #32,politics,Selection A,2.11,0.4682,0.4739,False,168369
+2026-06-09T21:14:09.849884,Lakers vs Warriors #33,basketball,Selection A,2.12,0.5316,0.4717,False,481599
+2026-06-10T01:14:09.849884,Celtics vs Bucks #34,basketball,Selection A,2.01,0.4381,0.4975,False,157430
+2026-06-10T05:14:09.849884,Chiefs vs Ravens #35,football,Selection A,2.26,0.4497,0.4425,False,35224
+2026-06-10T09:14:09.849884,Eagles vs Cowboys #36,football,Selection A,2.43,0.4475,0.4115,False,127385
+2026-06-10T13:14:09.849884,BTC > $100K by month-end #37,crypto,Selection A,2.48,0.4007,0.4032,True,339346
+2026-06-10T17:14:09.849884,ETH Flipping SOL #38,crypto,Selection A,1.64,0.6166,0.6098,True,366826
+2026-06-10T21:14:09.849884,Fed cuts 25bps #39,politics,Selection A,1.85,0.4787,0.5405,False,54241
+2026-06-11T01:14:09.849884,US Unemployment drops #40,politics,Selection A,1.41,0.6424,0.7092,True,101394
+2026-06-11T05:14:09.849884,Lakers vs Warriors #41,basketball,Selection A,2.29,0.3643,0.4367,True,260925
+2026-06-11T09:14:09.849884,Celtics vs Bucks #42,basketball,Selection A,2.17,0.4293,0.4608,False,95439
+2026-06-11T13:14:09.849884,Chiefs vs Ravens #43,football,Selection A,1.62,0.5918,0.6173,True,177122
+2026-06-11T17:14:09.849884,Eagles vs Cowboys #44,football,Selection A,2.73,0.3897,0.3663,False,439896
+2026-06-11T21:14:09.849884,BTC > $100K by month-end #45,crypto,Selection A,2.08,0.4403,0.4808,False,269528
+2026-06-12T01:14:09.849884,ETH Flipping SOL #46,crypto,Selection A,2.23,0.4346,0.4484,True,449635
+2026-06-12T05:14:09.849884,Fed cuts 25bps #47,politics,Selection A,1.71,0.6651,0.5848,True,365718
+2026-06-12T09:14:09.849884,US Unemployment drops #48,politics,Selection A,1.39,0.664,0.7194,False,392139
+2026-06-12T13:14:09.849884,Lakers vs Warriors #49,basketball,Selection A,1.73,0.5747,0.578,True,59721
+2026-06-12T17:14:09.849884,Celtics vs Bucks #50,basketball,Selection A,1.62,0.5822,0.6173,True,88795
+2026-06-12T21:14:09.849884,Chiefs vs Ravens #51,football,Selection A,1.7,0.5421,0.5882,True,358967
+2026-06-13T01:14:09.849884,Eagles vs Cowboys #52,football,Selection A,2.05,0.433,0.4878,True,375780
+2026-06-13T05:14:09.849884,BTC > $100K by month-end #53,crypto,Selection A,1.69,0.5774,0.5917,True,55900
+2026-06-13T09:14:09.849884,ETH Flipping SOL #54,crypto,Selection A,1.94,0.4787,0.5155,True,129554
+2026-06-13T13:14:09.849884,Fed cuts 25bps #55,politics,Selection A,1.36,0.6906,0.7353,True,399457
+2026-06-13T17:14:09.849884,US Unemployment drops #56,politics,Selection A,1.99,0.5259,0.5025,False,251333
+2026-06-13T21:14:09.849884,Lakers vs Warriors #57,basketball,Selection A,2.83,0.4183,0.3534,True,326281
+2026-06-14T01:14:09.849884,Celtics vs Bucks #58,basketball,Selection A,2.23,0.412,0.4484,False,477425
+2026-06-14T05:14:09.849884,Chiefs vs Ravens #59,football,Selection A,1.52,0.6702,0.6579,False,482173
+2026-06-14T09:14:09.849884,Eagles vs Cowboys #60,football,Selection A,1.47,0.6486,0.6803,True,198697
+2026-06-14T13:14:09.849884,BTC > $100K by month-end #61,crypto,Selection A,1.68,0.6479,0.5952,True,468715
+2026-06-14T17:14:09.849884,ETH Flipping SOL #62,crypto,Selection A,1.79,0.5936,0.5587,True,57616
+2026-06-14T21:14:09.849884,Fed cuts 25bps #63,politics,Selection A,1.63,0.5653,0.6135,False,351537
+2026-06-15T01:14:09.849884,US Unemployment drops #64,politics,Selection A,1.69,0.5959,0.5917,True,153860
+2026-06-15T05:14:09.849884,Lakers vs Warriors #65,basketball,Selection A,1.55,0.6333,0.6452,False,260557
+2026-06-15T09:14:09.849884,Celtics vs Bucks #66,basketball,Selection A,1.89,0.5255,0.5291,False,328482
+2026-06-15T13:14:09.849884,Chiefs vs Ravens #67,football,Selection A,1.67,0.5957,0.5988,True,194035
+2026-06-15T17:14:09.849884,Eagles vs Cowboys #68,football,Selection A,2.66,0.3829,0.3759,False,27611
+2026-06-15T21:14:09.849884,BTC > $100K by month-end #69,crypto,Selection A,2.44,0.513,0.4098,False,24945
+2026-06-16T01:14:09.849884,ETH Flipping SOL #70,crypto,Selection A,2.74,0.3631,0.365,False,186493
+2026-06-16T05:14:09.849884,Fed cuts 25bps #71,politics,Selection A,2.17,0.3945,0.4608,True,315216
+2026-06-16T09:14:09.849884,US Unemployment drops #72,politics,Selection A,2.7,0.3799,0.3704,True,270363
+2026-06-16T13:14:09.849884,Lakers vs Warriors #73,basketball,Selection A,1.67,0.5392,0.5988,False,262987
+2026-06-16T17:14:09.849884,Celtics vs Bucks #74,basketball,Selection A,2.03,0.463,0.4926,False,142707
+2026-06-16T21:14:09.849884,Chiefs vs Ravens #75,football,Selection A,2.21,0.5036,0.4525,True,86654
+2026-06-17T01:14:09.849884,Eagles vs Cowboys #76,football,Selection A,1.96,0.4376,0.5102,False,360152
+2026-06-17T05:14:09.849884,BTC > $100K by month-end #77,crypto,Selection A,1.69,0.5811,0.5917,False,215604
+2026-06-17T09:14:09.849884,ETH Flipping SOL #78,crypto,Selection A,1.97,0.4367,0.5076,True,381344
+2026-06-17T13:14:09.849884,Fed cuts 25bps #79,politics,Selection A,3.07,0.355,0.3257,True,250891
+2026-06-17T17:14:09.849884,US Unemployment drops #80,politics,Selection A,1.66,0.5157,0.6024,True,222587
+2026-06-17T21:14:09.849884,Lakers vs Warriors #81,basketball,Selection A,1.79,0.4895,0.5587,True,193560
+2026-06-18T01:14:09.849884,Celtics vs Bucks #82,basketball,Selection A,1.59,0.5691,0.6289,True,429680
+2026-06-18T05:14:09.849884,Chiefs vs Ravens #83,football,Selection A,1.78,0.5805,0.5618,False,470712
+2026-06-18T09:14:09.849884,Eagles vs Cowboys #84,football,Selection A,1.83,0.5514,0.5464,True,325211
+2026-06-18T13:14:09.849884,BTC > $100K by month-end #85,crypto,Selection A,1.87,0.5104,0.5348,True,480983
+2026-06-18T17:14:09.849884,ETH Flipping SOL #86,crypto,Selection A,1.5,0.6669,0.6667,True,43987
+2026-06-18T21:14:09.849884,Fed cuts 25bps #87,politics,Selection A,2.91,0.3853,0.3436,True,423988
+2026-06-19T01:14:09.849884,US Unemployment drops #88,politics,Selection A,2.84,0.3581,0.3521,False,148108
+2026-06-19T05:14:09.849884,Lakers vs Warriors #89,basketball,Selection A,2.35,0.3914,0.4255,False,370184
+2026-06-19T09:14:09.849884,Celtics vs Bucks #90,basketball,Selection A,1.43,0.6312,0.6993,True,96945
+2026-06-19T13:14:09.849884,Chiefs vs Ravens #91,football,Selection A,1.95,0.6127,0.5128,False,176993
+2026-06-19T17:14:09.849884,Eagles vs Cowboys #92,football,Selection A,1.64,0.6758,0.6098,False,220207
+2026-06-19T21:14:09.849884,BTC > $100K by month-end #93,crypto,Selection A,1.71,0.6128,0.5848,False,257573
+2026-06-20T01:14:09.849884,ETH Flipping SOL #94,crypto,Selection A,1.55,0.6393,0.6452,True,448806
+2026-06-20T05:14:09.849884,Fed cuts 25bps #95,politics,Selection A,2.17,0.4862,0.4608,False,475797
+2026-06-20T09:14:09.849884,US Unemployment drops #96,politics,Selection A,1.96,0.5507,0.5102,False,229738
+2026-06-20T13:14:09.849884,Lakers vs Warriors #97,basketball,Selection A,1.99,0.4526,0.5025,False,397873
+2026-06-20T17:14:09.849884,Celtics vs Bucks #98,basketball,Selection A,1.79,0.6264,0.5587,True,252265
+2026-06-20T21:14:09.849884,Chiefs vs Ravens #99,football,Selection A,4.08,0.3701,0.2451,False,181948
+2026-06-21T01:14:09.849884,Eagles vs Cowboys #100,football,Selection A,2.14,0.391,0.4673,True,383140
+2026-06-21T05:14:09.849884,BTC > $100K by month-end #101,crypto,Selection A,1.87,0.5664,0.5348,False,356058
+2026-06-21T09:14:09.849884,ETH Flipping SOL #102,crypto,Selection A,2.68,0.3785,0.3731,True,493453
+2026-06-21T13:14:09.849884,Fed cuts 25bps #103,politics,Selection A,1.89,0.481,0.5291,False,493140
+2026-06-21T17:14:09.849884,US Unemployment drops #104,politics,Selection A,1.72,0.6137,0.5814,True,50915
+2026-06-21T21:14:09.849884,Lakers vs Warriors #105,basketball,Selection A,1.96,0.622,0.5102,False,64486
+2026-06-22T01:14:09.849884,Celtics vs Bucks #106,basketball,Selection A,1.68,0.5224,0.5952,True,239643
+2026-06-22T05:14:09.849884,Chiefs vs Ravens #107,football,Selection A,2.38,0.3697,0.4202,False,481464
+2026-06-22T09:14:09.849884,Eagles vs Cowboys #108,football,Selection A,1.96,0.4812,0.5102,True,435613
+2026-06-22T13:14:09.849884,BTC > $100K by month-end #109,crypto,Selection A,2.39,0.4283,0.4184,False,46160
+2026-06-22T17:14:09.849884,ETH Flipping SOL #110,crypto,Selection A,1.71,0.5438,0.5848,False,266317
+2026-06-22T21:14:09.849884,Fed cuts 25bps #111,politics,Selection A,1.85,0.5703,0.5405,False,296314
+2026-06-23T01:14:09.849884,US Unemployment drops #112,politics,Selection A,1.32,0.6654,0.7576,True,147671
+2026-06-23T05:14:09.849884,Lakers vs Warriors #113,basketball,Selection A,1.49,0.6826,0.6711,True,145916
+2026-06-23T09:14:09.849884,Celtics vs Bucks #114,basketball,Selection A,2.21,0.4158,0.4525,False,183142
+2026-06-23T13:14:09.849884,Chiefs vs Ravens #115,football,Selection A,2.24,0.5543,0.4464,False,345518
+2026-06-23T17:14:09.849884,Eagles vs Cowboys #116,football,Selection A,2.43,0.4069,0.4115,False,413043
+2026-06-23T21:14:09.849884,BTC > $100K by month-end #117,crypto,Selection A,1.39,0.6824,0.7194,True,467036
+2026-06-24T01:14:09.849884,ETH Flipping SOL #118,crypto,Selection A,1.38,0.6531,0.7246,True,22919
+2026-06-24T05:14:09.849884,Fed cuts 25bps #119,politics,Selection A,2.06,0.4818,0.4854,True,485258
+2026-06-24T09:14:09.849884,US Unemployment drops #120,politics,Selection A,1.72,0.6447,0.5814,False,239659
+2026-06-24T13:14:09.849884,Lakers vs Warriors #121,basketball,Selection A,2.09,0.4952,0.4785,False,408321
+2026-06-24T17:14:09.849884,Celtics vs Bucks #122,basketball,Selection A,1.44,0.6999,0.6944,False,282161
+2026-06-24T21:14:09.849884,Chiefs vs Ravens #123,football,Selection A,1.68,0.6191,0.5952,True,477485
+2026-06-25T01:14:09.849884,Eagles vs Cowboys #124,football,Selection A,2.13,0.5622,0.4695,True,339133
+2026-06-25T05:14:09.849884,BTC > $100K by month-end #125,crypto,Selection A,1.94,0.5663,0.5155,False,264950
+2026-06-25T09:14:09.849884,ETH Flipping SOL #126,crypto,Selection A,1.67,0.6203,0.5988,True,427568
+2026-06-25T13:14:09.849884,Fed cuts 25bps #127,politics,Selection A,1.7,0.5432,0.5882,True,75667
+2026-06-25T17:14:09.849884,US Unemployment drops #128,politics,Selection A,2.84,0.3601,0.3521,False,313951
+2026-06-25T21:14:09.849884,Lakers vs Warriors #129,basketball,Selection A,1.77,0.5964,0.565,True,181787
+2026-06-26T01:14:09.849884,Celtics vs Bucks #130,basketball,Selection A,1.89,0.5565,0.5291,True,224362
+2026-06-26T05:14:09.849884,Chiefs vs Ravens #131,football,Selection A,1.49,0.6665,0.6711,False,204305
+2026-06-26T09:14:09.849884,Eagles vs Cowboys #132,football,Selection A,2.24,0.5677,0.4464,False,475265
+2026-06-26T13:14:09.849884,BTC > $100K by month-end #133,crypto,Selection A,2.59,0.4015,0.3861,True,234976
+2026-06-26T17:14:09.849884,ETH Flipping SOL #134,crypto,Selection A,1.37,0.693,0.7299,True,171088
+2026-06-26T21:14:09.849884,Fed cuts 25bps #135,politics,Selection A,1.8,0.5717,0.5556,True,72742
+2026-06-27T01:14:09.849884,US Unemployment drops #136,politics,Selection A,2.6,0.4032,0.3846,True,324028
+2026-06-27T05:14:09.849884,Lakers vs Warriors #137,basketball,Selection A,2.28,0.4137,0.4386,False,337103
+2026-06-27T09:14:09.849884,Celtics vs Bucks #138,basketball,Selection A,2.63,0.4103,0.3802,True,30025
+2026-06-27T13:14:09.849884,Chiefs vs Ravens #139,football,Selection A,2.84,0.4091,0.3521,True,69111
+2026-06-27T17:14:09.849884,Eagles vs Cowboys #140,football,Selection A,2.12,0.5113,0.4717,True,188492
+2026-06-27T21:14:09.849884,BTC > $100K by month-end #141,crypto,Selection A,1.96,0.5262,0.5102,False,317671
+2026-06-28T01:14:09.849884,ETH Flipping SOL #142,crypto,Selection A,2.74,0.3786,0.365,False,461227
+2026-06-28T05:14:09.849884,Fed cuts 25bps #143,politics,Selection A,2.5,0.3714,0.4,False,100415
+2026-06-28T09:14:09.849884,US Unemployment drops #144,politics,Selection A,2.65,0.4233,0.3774,True,247416
+2026-06-28T13:14:09.849884,Lakers vs Warriors #145,basketball,Selection A,1.9,0.5664,0.5263,False,27974
+2026-06-28T17:14:09.849884,Celtics vs Bucks #146,basketball,Selection A,3.22,0.4384,0.3106,False,448651
+2026-06-28T21:14:09.849884,Chiefs vs Ravens #147,football,Selection A,2.13,0.5291,0.4695,True,270982
+2026-06-29T01:14:09.849884,Eagles vs Cowboys #148,football,Selection A,2.35,0.4349,0.4255,True,194869
+2026-06-29T05:14:09.849884,BTC > $100K by month-end #149,crypto,Selection A,3.51,0.357,0.2849,True,68683
+2026-06-29T09:14:09.849884,ETH Flipping SOL #150,crypto,Selection A,1.61,0.6617,0.6211,True,342760
+2026-06-29T13:14:09.849884,Fed cuts 25bps #151,politics,Selection A,1.74,0.6262,0.5747,True,297552
+2026-06-29T17:14:09.849884,US Unemployment drops #152,politics,Selection A,1.66,0.6109,0.6024,True,72514
+2026-06-29T21:14:09.849884,Lakers vs Warriors #153,basketball,Selection A,1.97,0.4493,0.5076,False,184487
+2026-06-30T01:14:09.849884,Celtics vs Bucks #154,basketball,Selection A,1.6,0.6953,0.625,True,126241
+2026-06-30T05:14:09.849884,Chiefs vs Ravens #155,football,Selection A,2.89,0.3856,0.346,True,101417
+2026-06-30T09:14:09.849884,Eagles vs Cowboys #156,football,Selection A,2.48,0.4498,0.4032,True,449415
+2026-06-30T13:14:09.849884,BTC > $100K by month-end #157,crypto,Selection A,4.31,0.3781,0.232,False,64899
+2026-06-30T17:14:09.849884,ETH Flipping SOL #158,crypto,Selection A,1.95,0.4892,0.5128,False,434098
+2026-06-30T21:14:09.849884,Fed cuts 25bps #159,politics,Selection A,1.69,0.636,0.5917,False,465394
+2026-07-01T01:14:09.849884,US Unemployment drops #160,politics,Selection A,1.97,0.5449,0.5076,False,147189
+2026-07-01T05:14:09.849884,Lakers vs Warriors #161,basketball,Selection A,1.71,0.6193,0.5848,True,258729
+2026-07-01T09:14:09.849884,Celtics vs Bucks #162,basketball,Selection A,2.71,0.4348,0.369,True,309203
+2026-07-01T13:14:09.849884,Chiefs vs Ravens #163,football,Selection A,2.64,0.451,0.3788,False,270968
+2026-07-01T17:14:09.849884,Eagles vs Cowboys #164,football,Selection A,2.74,0.3681,0.365,True,75863
+2026-07-01T21:14:09.849884,BTC > $100K by month-end #165,crypto,Selection A,3.08,0.3722,0.3247,False,382511
+2026-07-02T01:14:09.849884,ETH Flipping SOL #166,crypto,Selection A,1.7,0.5585,0.5882,True,211802
+2026-07-02T05:14:09.849884,Fed cuts 25bps #167,politics,Selection A,2.13,0.4721,0.4695,True,42583
+2026-07-02T09:14:09.849884,US Unemployment drops #168,politics,Selection A,1.65,0.6094,0.6061,True,422496
+2026-07-02T13:14:09.849884,Lakers vs Warriors #169,basketball,Selection A,2.83,0.3989,0.3534,True,90490
+2026-07-02T17:14:09.849884,Celtics vs Bucks #170,basketball,Selection A,1.52,0.6351,0.6579,False,266302
+2026-07-02T21:14:09.849884,Chiefs vs Ravens #171,football,Selection A,2.23,0.4756,0.4484,False,225176
+2026-07-03T01:14:09.849884,Eagles vs Cowboys #172,football,Selection A,1.93,0.4819,0.5181,True,157675
+2026-07-03T05:14:09.849884,BTC > $100K by month-end #173,crypto,Selection A,1.91,0.6117,0.5236,False,198106
+2026-07-03T09:14:09.849884,ETH Flipping SOL #174,crypto,Selection A,1.88,0.5402,0.5319,False,315876
+2026-07-03T13:14:09.849884,Fed cuts 25bps #175,politics,Selection A,2.6,0.3909,0.3846,True,78243
+2026-07-03T17:14:09.849884,US Unemployment drops #176,politics,Selection A,1.54,0.6279,0.6494,True,271395
+2026-07-03T21:14:09.849884,Lakers vs Warriors #177,basketball,Selection A,1.58,0.6629,0.6329,True,131759
+2026-07-04T01:14:09.849884,Celtics vs Bucks #178,basketball,Selection A,1.6,0.6104,0.625,True,289245
+2026-07-04T05:14:09.849884,Chiefs vs Ravens #179,football,Selection A,1.69,0.6169,0.5917,False,64209
+2026-07-04T09:14:09.849884,Eagles vs Cowboys #180,football,Selection A,1.46,0.6463,0.6849,True,204670
+2026-07-04T13:14:09.849884,BTC > $100K by month-end #181,crypto,Selection A,1.66,0.6291,0.6024,False,362817
+2026-07-04T17:14:09.849884,ETH Flipping SOL #182,crypto,Selection A,1.86,0.5744,0.5376,False,275934
+2026-07-04T21:14:09.849884,Fed cuts 25bps #183,politics,Selection A,2.71,0.4381,0.369,False,295861
+2026-07-05T01:14:09.849884,US Unemployment drops #184,politics,Selection A,2.21,0.4903,0.4525,True,474168
+2026-07-05T05:14:09.849884,Lakers vs Warriors #185,basketball,Selection A,2.51,0.4037,0.3984,False,18873
+2026-07-05T09:14:09.849884,Celtics vs Bucks #186,basketball,Selection A,1.27,0.6552,0.7874,False,286915
+2026-07-05T13:14:09.849884,Chiefs vs Ravens #187,football,Selection A,1.67,0.5938,0.5988,True,292381
+2026-07-05T17:14:09.849884,Eagles vs Cowboys #188,football,Selection A,1.73,0.5624,0.578,True,370857
+2026-07-05T21:14:09.849884,BTC > $100K by month-end #189,crypto,Selection A,1.5,0.677,0.6667,True,492572
+2026-07-06T01:14:09.849884,ETH Flipping SOL #190,crypto,Selection A,1.47,0.6436,0.6803,True,461212
+2026-07-06T05:14:09.849884,Fed cuts 25bps #191,politics,Selection A,1.28,0.6545,0.7812,True,36833
+2026-07-06T09:14:09.849884,US Unemployment drops #192,politics,Selection A,2.07,0.4673,0.4831,False,12269
+2026-07-06T13:14:09.849884,Lakers vs Warriors #193,basketball,Selection A,2.01,0.4667,0.4975,False,179709
+2026-07-06T17:14:09.849884,Celtics vs Bucks #194,basketball,Selection A,2.95,0.4714,0.339,False,231586
+2026-07-06T21:14:09.849884,Chiefs vs Ravens #195,football,Selection A,2.81,0.4286,0.3559,True,254200
+2026-07-07T01:14:09.849884,Eagles vs Cowboys #196,football,Selection A,2.09,0.4966,0.4785,False,187573
+2026-07-07T05:14:09.849884,BTC > $100K by month-end #197,crypto,Selection A,2.04,0.5532,0.4902,False,82844
+2026-07-07T09:14:09.849884,ETH Flipping SOL #198,crypto,Selection A,1.96,0.4951,0.5102,True,498468
+2026-07-07T13:14:09.849884,Fed cuts 25bps #199,politics,Selection A,2.08,0.5258,0.4808,False,112853
+2026-07-07T17:14:09.849884,US Unemployment drops #200,politics,Selection A,1.5,0.6643,0.6667,True,103436
+2026-07-07T21:14:09.849884,Lakers vs Warriors #201,basketball,Selection A,2.08,0.3628,0.4808,True,390008
+2026-07-08T01:14:09.849884,Celtics vs Bucks #202,basketball,Selection A,2.27,0.5087,0.4405,False,225973
+2026-07-08T05:14:09.849884,Chiefs vs Ravens #203,football,Selection A,2.4,0.4903,0.4167,True,432274
+2026-07-08T09:14:09.849884,Eagles vs Cowboys #204,football,Selection A,1.45,0.6811,0.6897,True,142664
+2026-07-08T13:14:09.849884,BTC > $100K by month-end #205,crypto,Selection A,1.82,0.5754,0.5495,True,360826
+2026-07-08T17:14:09.849884,ETH Flipping SOL #206,crypto,Selection A,1.76,0.5806,0.5682,True,118766
+2026-07-08T21:14:09.849884,Fed cuts 25bps #207,politics,Selection A,2.37,0.4309,0.4219,True,329845
+2026-07-09T01:14:09.849884,US Unemployment drops #208,politics,Selection A,2.42,0.4334,0.4132,True,129154
+2026-07-09T05:14:09.849884,Lakers vs Warriors #209,basketball,Selection A,1.64,0.6028,0.6098,True,337361
+2026-07-09T09:14:09.849884,Celtics vs Bucks #210,basketball,Selection A,2.38,0.4217,0.4202,True,449204
+2026-07-09T13:14:09.849884,Chiefs vs Ravens #211,football,Selection A,3.99,0.3546,0.2506,False,410547
+2026-07-09T17:14:09.849884,Eagles vs Cowboys #212,football,Selection A,1.82,0.4696,0.5495,True,196049
+2026-07-09T21:14:09.849884,BTC > $100K by month-end #213,crypto,Selection A,1.7,0.5566,0.5882,True,280503
+2026-07-10T01:14:09.849884,ETH Flipping SOL #214,crypto,Selection A,2.39,0.5026,0.4184,True,474742
+2026-07-10T05:14:09.849884,Fed cuts 25bps #215,politics,Selection A,1.51,0.6173,0.6623,False,218354
+2026-07-10T09:14:09.849884,US Unemployment drops #216,politics,Selection A,2.95,0.3579,0.339,True,275400
+2026-07-10T13:14:09.849884,Lakers vs Warriors #217,basketball,Selection A,1.88,0.5717,0.5319,False,492357
+2026-07-10T17:14:09.849884,Celtics vs Bucks #218,basketball,Selection A,1.99,0.534,0.5025,True,143430
+2026-07-10T21:14:09.849884,Chiefs vs Ravens #219,football,Selection A,3.93,0.3564,0.2545,False,329195
+2026-07-11T01:14:09.849884,Eagles vs Cowboys #220,football,Selection A,1.51,0.6404,0.6623,True,15387
+2026-07-11T05:14:09.849884,BTC > $100K by month-end #221,crypto,Selection A,2.14,0.3979,0.4673,False,95931
+2026-07-11T09:14:09.849884,ETH Flipping SOL #222,crypto,Selection A,1.34,0.67,0.7463,True,197737
+2026-07-11T13:14:09.849884,Fed cuts 25bps #223,politics,Selection A,1.99,0.5316,0.5025,False,130221
+2026-07-11T17:14:09.849884,US Unemployment drops #224,politics,Selection A,2.06,0.4863,0.4854,True,184279
+2026-07-11T21:14:09.849884,Lakers vs Warriors #225,basketball,Selection A,1.6,0.6017,0.625,True,335198
+2026-07-12T01:14:09.849884,Celtics vs Bucks #226,basketball,Selection A,1.72,0.6779,0.5814,False,115320
+2026-07-12T05:14:09.849884,Chiefs vs Ravens #227,football,Selection A,2.66,0.3609,0.3759,True,253219
+2026-07-12T09:14:09.849884,Eagles vs Cowboys #228,football,Selection A,2.12,0.5589,0.4717,True,387746
+2026-07-12T13:14:09.849884,BTC > $100K by month-end #229,crypto,Selection A,2.62,0.3873,0.3817,False,347317
+2026-07-12T17:14:09.849884,ETH Flipping SOL #230,crypto,Selection A,2.11,0.5022,0.4739,True,411360
+2026-07-12T21:14:09.849884,Fed cuts 25bps #231,politics,Selection A,1.76,0.6298,0.5682,True,186877
+2026-07-13T01:14:09.849884,US Unemployment drops #232,politics,Selection A,2.41,0.3821,0.4149,False,77041
+2026-07-13T05:14:09.849884,Lakers vs Warriors #233,basketball,Selection A,1.64,0.6826,0.6098,True,437743
+2026-07-13T09:14:09.849884,Celtics vs Bucks #234,basketball,Selection A,1.7,0.6063,0.5882,False,332803
+2026-07-13T13:14:09.849884,Chiefs vs Ravens #235,football,Selection A,1.78,0.5923,0.5618,True,118392
+2026-07-13T17:14:09.849884,Eagles vs Cowboys #236,football,Selection A,1.38,0.6957,0.7246,False,29319
+2026-07-13T21:14:09.849884,BTC > $100K by month-end #237,crypto,Selection A,1.58,0.597,0.6329,True,351735
+2026-07-14T01:14:09.849884,ETH Flipping SOL #238,crypto,Selection A,2.23,0.4541,0.4484,False,485818
+2026-07-14T05:14:09.849884,Fed cuts 25bps #239,politics,Selection A,1.36,0.6805,0.7353,False,166359
+2026-07-14T09:14:09.849884,US Unemployment drops #240,politics,Selection A,1.59,0.6401,0.6289,True,302172
+2026-07-14T13:14:09.849884,Lakers vs Warriors #241,basketball,Selection A,2.76,0.4305,0.3623,False,42024
+2026-07-14T17:14:09.849884,Celtics vs Bucks #242,basketball,Selection A,1.95,0.4604,0.5128,False,397454
+2026-07-14T21:14:09.849884,Chiefs vs Ravens #243,football,Selection A,2.02,0.4616,0.495,False,124150
+2026-07-15T01:14:09.849884,Eagles vs Cowboys #244,football,Selection A,2.81,0.3585,0.3559,False,20422
+2026-07-15T05:14:09.849884,BTC > $100K by month-end #245,crypto,Selection A,1.45,0.6561,0.6897,False,498987
+2026-07-15T09:14:09.849884,ETH Flipping SOL #246,crypto,Selection A,2.16,0.4727,0.463,False,206946
+2026-07-15T13:14:09.849884,Fed cuts 25bps #247,politics,Selection A,1.8,0.518,0.5556,False,386453
+2026-07-15T17:14:09.849884,US Unemployment drops #248,politics,Selection A,2.0,0.4962,0.5,True,371415
+2026-07-15T21:14:09.849884,Lakers vs Warriors #249,basketball,Selection A,2.47,0.4336,0.4049,True,155190
+2026-07-16T01:14:09.849884,Celtics vs Bucks #250,basketball,Selection A,2.66,0.4318,0.3759,True,18758
+2026-07-16T05:14:09.849884,Chiefs vs Ravens #251,football,Selection A,1.69,0.6957,0.5917,True,116944
+2026-07-16T09:14:09.849884,Eagles vs Cowboys #252,football,Selection A,1.62,0.6825,0.6173,False,53811
+2026-07-16T13:14:09.849884,BTC > $100K by month-end #253,crypto,Selection A,1.65,0.4962,0.6061,True,495672
+2026-07-16T17:14:09.849884,ETH Flipping SOL #254,crypto,Selection A,2.61,0.4311,0.3831,False,328326
+2026-07-16T21:14:09.849884,Fed cuts 25bps #255,politics,Selection A,2.12,0.5627,0.4717,True,118038
+2026-07-17T01:14:09.849884,US Unemployment drops #256,politics,Selection A,2.47,0.4153,0.4049,False,181561
+2026-07-17T05:14:09.849884,Lakers vs Warriors #257,basketball,Selection A,2.99,0.3702,0.3344,False,351050
+2026-07-17T09:14:09.849884,Celtics vs Bucks #258,basketball,Selection A,3.05,0.4039,0.3279,False,119975
+2026-07-17T13:14:09.849884,Chiefs vs Ravens #259,football,Selection A,1.86,0.4283,0.5376,False,54828
+2026-07-17T17:14:09.849884,Eagles vs Cowboys #260,football,Selection A,1.43,0.6571,0.6993,True,73462
+2026-07-17T21:14:09.849884,BTC > $100K by month-end #261,crypto,Selection A,1.46,0.6611,0.6849,True,52623
+2026-07-18T01:14:09.849884,ETH Flipping SOL #262,crypto,Selection A,1.86,0.493,0.5376,True,137279
+2026-07-18T05:14:09.849884,Fed cuts 25bps #263,politics,Selection A,1.81,0.6032,0.5525,True,344796
+2026-07-18T09:14:09.849884,US Unemployment drops #264,politics,Selection A,2.78,0.3766,0.3597,False,252621
+2026-07-18T13:14:09.849884,Lakers vs Warriors #265,basketball,Selection A,1.75,0.5182,0.5714,True,342227
+2026-07-18T17:14:09.849884,Celtics vs Bucks #266,basketball,Selection A,1.8,0.548,0.5556,True,440528
+2026-07-18T21:14:09.849884,Chiefs vs Ravens #267,football,Selection A,1.49,0.6291,0.6711,False,357097
+2026-07-19T01:14:09.849884,Eagles vs Cowboys #268,football,Selection A,1.52,0.643,0.6579,False,343268
+2026-07-19T05:14:09.849884,BTC > $100K by month-end #269,crypto,Selection A,1.91,0.5665,0.5236,False,437203
+2026-07-19T09:14:09.849884,ETH Flipping SOL #270,crypto,Selection A,2.71,0.3602,0.369,False,73146
+2026-07-19T13:14:09.849884,Fed cuts 25bps #271,politics,Selection A,2.39,0.4673,0.4184,False,417745
+2026-07-19T17:14:09.849884,US Unemployment drops #272,politics,Selection A,1.84,0.5276,0.5435,True,150648
+2026-07-19T21:14:09.849884,Lakers vs Warriors #273,basketball,Selection A,1.79,0.5659,0.5587,True,320662
+2026-07-20T01:14:09.849884,Celtics vs Bucks #274,basketball,Selection A,1.87,0.539,0.5348,False,62420
+2026-07-20T05:14:09.849884,Chiefs vs Ravens #275,football,Selection A,1.57,0.6164,0.6369,True,319984
+2026-07-20T09:14:09.849884,Eagles vs Cowboys #276,football,Selection A,1.48,0.6762,0.6757,True,469241
+2026-07-20T13:14:09.849884,BTC > $100K by month-end #277,crypto,Selection A,1.74,0.5908,0.5747,False,43001
+2026-07-20T17:14:09.849884,ETH Flipping SOL #278,crypto,Selection A,1.91,0.5538,0.5236,True,314248
+2026-07-20T21:14:09.849884,Fed cuts 25bps #279,politics,Selection A,2.71,0.366,0.369,True,20840
+2026-07-21T01:14:09.849884,US Unemployment drops #280,politics,Selection A,2.36,0.4633,0.4237,False,387499
+2026-07-21T05:14:09.849884,Lakers vs Warriors #281,basketball,Selection A,2.03,0.5892,0.4926,False,218828
+2026-07-21T09:14:09.849884,Celtics vs Bucks #282,basketball,Selection A,2.1,0.508,0.4762,True,399456
+2026-07-21T13:14:09.849884,Chiefs vs Ravens #283,football,Selection A,1.55,0.5928,0.6452,True,475923
+2026-07-21T17:14:09.849884,Eagles vs Cowboys #284,football,Selection A,2.19,0.4029,0.4566,False,472371
+2026-07-21T21:14:09.849884,BTC > $100K by month-end #285,crypto,Selection A,2.37,0.4969,0.4219,True,492149
+2026-07-22T01:14:09.849884,ETH Flipping SOL #286,crypto,Selection A,1.76,0.4933,0.5682,False,122677
+2026-07-22T05:14:09.849884,Fed cuts 25bps #287,politics,Selection A,2.41,0.4246,0.4149,True,433535
+2026-07-22T09:14:09.849884,US Unemployment drops #288,politics,Selection A,2.03,0.5156,0.4926,False,100907
+2026-07-22T13:14:09.849884,Lakers vs Warriors #289,basketball,Selection A,1.46,0.654,0.6849,False,382901
+2026-07-22T17:14:09.849884,Celtics vs Bucks #290,basketball,Selection A,1.67,0.5692,0.5988,True,25937
+2026-07-22T21:14:09.849884,Chiefs vs Ravens #291,football,Selection A,1.36,0.6723,0.7353,True,67481
+2026-07-23T01:14:09.849884,Eagles vs Cowboys #292,football,Selection A,2.48,0.3938,0.4032,False,220849
+2026-07-23T05:14:09.849884,BTC > $100K by month-end #293,crypto,Selection A,2.72,0.4202,0.3676,False,141806
+2026-07-23T09:14:09.849884,ETH Flipping SOL #294,crypto,Selection A,1.61,0.6291,0.6211,True,233057
+2026-07-23T13:14:09.849884,Fed cuts 25bps #295,politics,Selection A,3.05,0.3541,0.3279,False,304010
+2026-07-23T17:14:09.849884,US Unemployment drops #296,politics,Selection A,2.48,0.4521,0.4032,False,431459
+2026-07-23T21:14:09.849884,Lakers vs Warriors #297,basketball,Selection A,1.62,0.6229,0.6173,True,128602
+2026-07-24T01:14:09.849884,Celtics vs Bucks #298,basketball,Selection A,1.51,0.6953,0.6623,True,254455
+2026-07-24T05:14:09.849884,Chiefs vs Ravens #299,football,Selection A,1.71,0.5664,0.5848,True,169966
+2026-07-24T09:14:09.849884,Eagles vs Cowboys #300,football,Selection A,1.63,0.5312,0.6135,True,181807
+2026-07-24T13:14:09.849884,BTC > $100K by month-end #301,crypto,Selection A,2.98,0.3616,0.3356,True,288095
+2026-07-24T17:14:09.849884,ETH Flipping SOL #302,crypto,Selection A,1.83,0.5913,0.5464,False,108073
+2026-07-24T21:14:09.849884,Fed cuts 25bps #303,politics,Selection A,2.45,0.4086,0.4082,False,25477
+2026-07-25T01:14:09.849884,US Unemployment drops #304,politics,Selection A,1.58,0.6777,0.6329,True,275235
+2026-07-25T05:14:09.849884,Lakers vs Warriors #305,basketball,Selection A,1.64,0.5982,0.6098,False,176330
+2026-07-25T09:14:09.849884,Celtics vs Bucks #306,basketball,Selection A,1.5,0.6352,0.6667,True,448460
+2026-07-25T13:14:09.849884,Chiefs vs Ravens #307,football,Selection A,1.92,0.5417,0.5208,False,267937
+2026-07-25T17:14:09.849884,Eagles vs Cowboys #308,football,Selection A,1.5,0.6061,0.6667,True,39572
+2026-07-25T21:14:09.849884,BTC > $100K by month-end #309,crypto,Selection A,2.71,0.4365,0.369,False,332766
+2026-07-26T01:14:09.849884,ETH Flipping SOL #310,crypto,Selection A,2.05,0.5244,0.4878,False,362408
+2026-07-26T05:14:09.849884,Fed cuts 25bps #311,politics,Selection A,2.8,0.43,0.3571,False,45377
+2026-07-26T09:14:09.849884,US Unemployment drops #312,politics,Selection A,2.68,0.3607,0.3731,True,236685
+2026-07-26T13:14:09.849884,Lakers vs Warriors #313,basketball,Selection A,1.43,0.6539,0.6993,True,179508
+2026-07-26T17:14:09.849884,Celtics vs Bucks #314,basketball,Selection A,1.95,0.4799,0.5128,False,29653
+2026-07-26T21:14:09.849884,Chiefs vs Ravens #315,football,Selection A,1.76,0.6535,0.5682,False,248467
+2026-07-27T01:14:09.849884,Eagles vs Cowboys #316,football,Selection A,1.32,0.6557,0.7576,False,216643
+2026-07-27T05:14:09.849884,BTC > $100K by month-end #317,crypto,Selection A,2.1,0.4469,0.4762,True,315253
+2026-07-27T09:14:09.849884,ETH Flipping SOL #318,crypto,Selection A,1.75,0.571,0.5714,False,74468
+2026-07-27T13:14:09.849884,Fed cuts 25bps #319,politics,Selection A,1.64,0.6005,0.6098,True,131143
+2026-07-27T17:14:09.849884,US Unemployment drops #320,politics,Selection A,1.58,0.6548,0.6329,True,262260
+2026-07-27T21:14:09.849884,Lakers vs Warriors #321,basketball,Selection A,2.48,0.4757,0.4032,True,485012
+2026-07-28T01:14:09.849884,Celtics vs Bucks #322,basketball,Selection A,2.26,0.4403,0.4425,False,169343
+2026-07-28T05:14:09.849884,Chiefs vs Ravens #323,football,Selection A,1.87,0.6207,0.5348,True,93181
+2026-07-28T09:14:09.849884,Eagles vs Cowboys #324,football,Selection A,1.97,0.5319,0.5076,True,416152
+2026-07-28T13:14:09.849884,BTC > $100K by month-end #325,crypto,Selection A,1.91,0.5008,0.5236,False,91850
+2026-07-28T17:14:09.849884,ETH Flipping SOL #326,crypto,Selection A,3.11,0.4087,0.3215,True,370836
+2026-07-28T21:14:09.849884,Fed cuts 25bps #327,politics,Selection A,1.57,0.5823,0.6369,False,296823
+2026-07-29T01:14:09.849884,US Unemployment drops #328,politics,Selection A,1.55,0.6539,0.6452,True,64840
+2026-07-29T05:14:09.849884,Lakers vs Warriors #329,basketball,Selection A,2.31,0.4444,0.4329,False,29278
+2026-07-29T09:14:09.849884,Celtics vs Bucks #330,basketball,Selection A,2.93,0.3927,0.3413,False,467598
+2026-07-29T13:14:09.849884,Chiefs vs Ravens #331,football,Selection A,2.4,0.4607,0.4167,True,493448
+2026-07-29T17:14:09.849884,Eagles vs Cowboys #332,football,Selection A,1.46,0.6878,0.6849,True,476387
+2026-07-29T21:14:09.849884,BTC > $100K by month-end #333,crypto,Selection A,1.79,0.5737,0.5587,True,249534
+2026-07-30T01:14:09.849884,ETH Flipping SOL #334,crypto,Selection A,1.58,0.5834,0.6329,True,24687
+2026-07-30T05:14:09.849884,Fed cuts 25bps #335,politics,Selection A,2.52,0.4578,0.3968,False,485256
+2026-07-30T09:14:09.849884,US Unemployment drops #336,politics,Selection A,2.5,0.3829,0.4,False,227437
+2026-07-30T13:14:09.849884,Lakers vs Warriors #337,basketball,Selection A,1.48,0.6538,0.6757,False,472860
+2026-07-30T17:14:09.849884,Celtics vs Bucks #338,basketball,Selection A,1.87,0.5891,0.5348,True,312745
+2026-07-30T21:14:09.849884,Chiefs vs Ravens #339,football,Selection A,1.6,0.6541,0.625,False,347868
+2026-07-31T01:14:09.849884,Eagles vs Cowboys #340,football,Selection A,1.72,0.5868,0.5814,True,332853
+2026-07-31T05:14:09.849884,BTC > $100K by month-end #341,crypto,Selection A,2.29,0.4879,0.4367,False,499712
+2026-07-31T09:14:09.849884,ETH Flipping SOL #342,crypto,Selection A,2.73,0.3669,0.3663,False,209384
+2026-07-31T13:14:09.849884,Fed cuts 25bps #343,politics,Selection A,1.5,0.6548,0.6667,False,440472
+2026-07-31T17:14:09.849884,US Unemployment drops #344,politics,Selection A,1.8,0.4914,0.5556,True,337120
+2026-07-31T21:14:09.849884,Lakers vs Warriors #345,basketball,Selection A,1.51,0.6327,0.6623,True,410738
+2026-08-01T01:14:09.849884,Celtics vs Bucks #346,basketball,Selection A,2.44,0.3921,0.4098,False,12821
+2026-08-01T05:14:09.849884,Chiefs vs Ravens #347,football,Selection A,2.6,0.4636,0.3846,False,200393
+2026-08-01T09:14:09.849884,Eagles vs Cowboys #348,football,Selection A,2.44,0.507,0.4098,True,192893
+2026-08-01T13:14:09.849884,BTC > $100K by month-end #349,crypto,Selection A,2.36,0.4295,0.4237,False,313550
+2026-08-01T17:14:09.849884,ETH Flipping SOL #350,crypto,Selection A,2.15,0.5122,0.4651,True,433033
+2026-08-01T21:14:09.849884,Fed cuts 25bps #351,politics,Selection A,2.01,0.5317,0.4975,True,196295
+2026-08-02T01:14:09.849884,US Unemployment drops #352,politics,Selection A,2.1,0.4896,0.4762,False,271465
+2026-08-02T05:14:09.849884,Lakers vs Warriors #353,basketball,Selection A,1.7,0.5628,0.5882,False,478206
+2026-08-02T09:14:09.849884,Celtics vs Bucks #354,basketball,Selection A,2.71,0.3564,0.369,True,13705
+2026-08-02T13:14:09.849884,Chiefs vs Ravens #355,football,Selection A,1.8,0.5766,0.5556,False,39531
+2026-08-02T17:14:09.849884,Eagles vs Cowboys #356,football,Selection A,1.44,0.6771,0.6944,True,59696
+2026-08-02T21:14:09.849884,BTC > $100K by month-end #357,crypto,Selection A,2.15,0.5201,0.4651,True,403482
+2026-08-03T01:14:09.849884,ETH Flipping SOL #358,crypto,Selection A,2.09,0.5387,0.4785,True,309063
+2026-08-03T05:14:09.849884,Fed cuts 25bps #359,politics,Selection A,1.78,0.6007,0.5618,True,98763
+2026-08-03T09:14:09.849884,US Unemployment drops #360,politics,Selection A,2.01,0.5884,0.4975,True,267330
+2026-08-03T13:14:09.849884,Lakers vs Warriors #361,basketball,Selection A,1.67,0.5982,0.5988,True,481834
+2026-08-03T17:14:09.849884,Celtics vs Bucks #362,basketball,Selection A,2.17,0.5192,0.4608,False,279611
+2026-08-03T21:14:09.849884,Chiefs vs Ravens #363,football,Selection A,2.68,0.3652,0.3731,False,411402
+2026-08-04T01:14:09.849884,Eagles vs Cowboys #364,football,Selection A,1.51,0.6595,0.6623,True,113901
+2026-08-04T05:14:09.849884,BTC > $100K by month-end #365,crypto,Selection A,1.63,0.5638,0.6135,False,183176
+2026-08-04T09:14:09.849884,ETH Flipping SOL #366,crypto,Selection A,2.48,0.4329,0.4032,False,144654
+2026-08-04T13:14:09.849884,Fed cuts 25bps #367,politics,Selection A,1.38,0.6379,0.7246,True,315691
+2026-08-04T17:14:09.849884,US Unemployment drops #368,politics,Selection A,2.2,0.5081,0.4545,False,92326
+2026-08-04T21:14:09.849884,Lakers vs Warriors #369,basketball,Selection A,1.72,0.6079,0.5814,True,21582
+2026-08-05T01:14:09.849884,Celtics vs Bucks #370,basketball,Selection A,1.69,0.5747,0.5917,False,277881
+2026-08-05T05:14:09.849884,Chiefs vs Ravens #371,football,Selection A,2.03,0.4312,0.4926,False,494014
+2026-08-05T09:14:09.849884,Eagles vs Cowboys #372,football,Selection A,3.39,0.3978,0.295,False,208116
+2026-08-05T13:14:09.849884,BTC > $100K by month-end #373,crypto,Selection A,1.85,0.4999,0.5405,False,72913
+2026-08-05T17:14:09.849884,ETH Flipping SOL #374,crypto,Selection A,2.34,0.3864,0.4274,False,293409
+2026-08-05T21:14:09.849884,Fed cuts 25bps #375,politics,Selection A,2.66,0.446,0.3759,True,44017
+2026-08-06T01:14:09.849884,US Unemployment drops #376,politics,Selection A,2.06,0.5317,0.4854,True,402174
+2026-08-06T05:14:09.849884,Lakers vs Warriors #377,basketball,Selection A,2.12,0.4318,0.4717,False,271149
+2026-08-06T09:14:09.849884,Celtics vs Bucks #378,basketball,Selection A,2.19,0.4635,0.4566,True,338048
+2026-08-06T13:14:09.849884,Chiefs vs Ravens #379,football,Selection A,1.37,0.6979,0.7299,False,237950
+2026-08-06T17:14:09.849884,Eagles vs Cowboys #380,football,Selection A,2.19,0.371,0.4566,False,479236
+2026-08-06T21:14:09.849884,BTC > $100K by month-end #381,crypto,Selection A,2.9,0.4114,0.3448,False,57371
+2026-08-07T01:14:09.849884,ETH Flipping SOL #382,crypto,Selection A,1.89,0.5076,0.5291,False,180310
+2026-08-07T05:14:09.849884,Fed cuts 25bps #383,politics,Selection A,1.83,0.5827,0.5464,True,496316
+2026-08-07T09:14:09.849884,US Unemployment drops #384,politics,Selection A,1.67,0.6745,0.5988,True,422596
+2026-08-07T13:14:09.849884,Lakers vs Warriors #385,basketball,Selection A,2.07,0.5323,0.4831,False,72579
+2026-08-07T17:14:09.849884,Celtics vs Bucks #386,basketball,Selection A,1.55,0.6391,0.6452,False,357284
+2026-08-07T21:14:09.849884,Chiefs vs Ravens #387,football,Selection A,3.44,0.3627,0.2907,True,52944
+2026-08-08T01:14:09.849884,Eagles vs Cowboys #388,football,Selection A,1.59,0.6779,0.6289,True,159706
+2026-08-08T05:14:09.849884,BTC > $100K by month-end #389,crypto,Selection A,1.7,0.4889,0.5882,False,460502
+2026-08-08T09:14:09.849884,ETH Flipping SOL #390,crypto,Selection A,2.2,0.5239,0.4545,False,427198
+2026-08-08T13:14:09.849884,Fed cuts 25bps #391,politics,Selection A,2.59,0.423,0.3861,False,435347
+2026-08-08T17:14:09.849884,US Unemployment drops #392,politics,Selection A,1.46,0.6321,0.6849,False,159292
+2026-08-08T21:14:09.849884,Lakers vs Warriors #393,basketball,Selection A,3.33,0.3783,0.3003,False,179588
+2026-08-09T01:14:09.849884,Celtics vs Bucks #394,basketball,Selection A,1.49,0.6915,0.6711,True,413015
+2026-08-09T05:14:09.849884,Chiefs vs Ravens #395,football,Selection A,1.96,0.3964,0.5102,False,95670
+2026-08-09T09:14:09.849884,Eagles vs Cowboys #396,football,Selection A,2.0,0.5259,0.5,True,81723
+2026-08-09T13:14:09.849884,BTC > $100K by month-end #397,crypto,Selection A,2.03,0.4786,0.4926,True,162789
+2026-08-09T17:14:09.849884,ETH Flipping SOL #398,crypto,Selection A,1.92,0.5271,0.5208,True,61775
+2026-08-09T21:14:09.849884,Fed cuts 25bps #399,politics,Selection A,1.68,0.5743,0.5952,False,84492
+2026-08-10T01:14:09.849884,US Unemployment drops #400,politics,Selection A,3.47,0.3715,0.2882,False,235302
+2026-08-10T05:14:09.849884,Lakers vs Warriors #401,basketball,Selection A,3.08,0.3704,0.3247,True,158604
+2026-08-10T09:14:09.849884,Celtics vs Bucks #402,basketball,Selection A,2.87,0.3854,0.3484,False,40522
+2026-08-10T13:14:09.849884,Chiefs vs Ravens #403,football,Selection A,2.28,0.5283,0.4386,False,268250
+2026-08-10T17:14:09.849884,Eagles vs Cowboys #404,football,Selection A,1.87,0.4991,0.5348,True,444436
+2026-08-10T21:14:09.849884,BTC > $100K by month-end #405,crypto,Selection A,2.13,0.5074,0.4695,True,415493
+2026-08-11T01:14:09.849884,ETH Flipping SOL #406,crypto,Selection A,1.86,0.6068,0.5376,False,15405
+2026-08-11T05:14:09.849884,Fed cuts 25bps #407,politics,Selection A,2.16,0.4957,0.463,True,382542
+2026-08-11T09:14:09.849884,US Unemployment drops #408,politics,Selection A,2.62,0.398,0.3817,False,115448
+2026-08-11T13:14:09.849884,Lakers vs Warriors #409,basketball,Selection A,3.5,0.3542,0.2857,False,232644
+2026-08-11T17:14:09.849884,Celtics vs Bucks #410,basketball,Selection A,1.57,0.6455,0.6369,True,249238
+2026-08-11T21:14:09.849884,Chiefs vs Ravens #411,football,Selection A,2.23,0.4025,0.4484,False,194185
+2026-08-12T01:14:09.849884,Eagles vs Cowboys #412,football,Selection A,2.32,0.4881,0.431,True,394658
+2026-08-12T05:14:09.849884,BTC > $100K by month-end #413,crypto,Selection A,1.39,0.6622,0.7194,True,134788
+2026-08-12T09:14:09.849884,ETH Flipping SOL #414,crypto,Selection A,1.72,0.6443,0.5814,True,451863
+2026-08-12T13:14:09.849884,Fed cuts 25bps #415,politics,Selection A,1.74,0.5115,0.5747,False,321968
+2026-08-12T17:14:09.849884,US Unemployment drops #416,politics,Selection A,1.61,0.5649,0.6211,True,264019
+2026-08-12T21:14:09.849884,Lakers vs Warriors #417,basketball,Selection A,2.55,0.4026,0.3922,False,30419
+2026-08-13T01:14:09.849884,Celtics vs Bucks #418,basketball,Selection A,2.21,0.3797,0.4525,False,45321
+2026-08-13T05:14:09.849884,Chiefs vs Ravens #419,football,Selection A,3.15,0.3749,0.3175,True,181354
+2026-08-13T09:14:09.849884,Eagles vs Cowboys #420,football,Selection A,1.47,0.6211,0.6803,False,100745
+2026-08-13T13:14:09.849884,BTC > $100K by month-end #421,crypto,Selection A,2.43,0.4109,0.4115,False,139872
+2026-08-13T17:14:09.849884,ETH Flipping SOL #422,crypto,Selection A,3.29,0.3573,0.304,True,484251
+2026-08-13T21:14:09.849884,Fed cuts 25bps #423,politics,Selection A,2.12,0.4534,0.4717,True,110786
+2026-08-14T01:14:09.849884,US Unemployment drops #424,politics,Selection A,2.25,0.3925,0.4444,False,389570
+2026-08-14T05:14:09.849884,Lakers vs Warriors #425,basketball,Selection A,1.86,0.5754,0.5376,False,401369
+2026-08-14T09:14:09.849884,Celtics vs Bucks #426,basketball,Selection A,2.27,0.4525,0.4405,False,304921
+2026-08-14T13:14:09.849884,Chiefs vs Ravens #427,football,Selection A,1.71,0.5538,0.5848,False,72766
+2026-08-14T17:14:09.849884,Eagles vs Cowboys #428,football,Selection A,2.05,0.4684,0.4878,False,120061
+2026-08-14T21:14:09.849884,BTC > $100K by month-end #429,crypto,Selection A,2.65,0.4803,0.3774,False,472107
+2026-08-15T01:14:09.849884,ETH Flipping SOL #430,crypto,Selection A,3.13,0.4342,0.3195,True,106760
+2026-08-15T05:14:09.849884,Fed cuts 25bps #431,politics,Selection A,1.71,0.6604,0.5848,False,432071
+2026-08-15T09:14:09.849884,US Unemployment drops #432,politics,Selection A,1.45,0.6463,0.6897,False,133598
+2026-08-15T13:14:09.849884,Lakers vs Warriors #433,basketball,Selection A,1.49,0.6143,0.6711,False,390459
+2026-08-15T17:14:09.849884,Celtics vs Bucks #434,basketball,Selection A,1.77,0.5797,0.565,True,277063
+2026-08-15T21:14:09.849884,Chiefs vs Ravens #435,football,Selection A,1.46,0.6946,0.6849,False,410714
+2026-08-16T01:14:09.849884,Eagles vs Cowboys #436,football,Selection A,2.46,0.4247,0.4065,False,421944
+2026-08-16T05:14:09.849884,BTC > $100K by month-end #437,crypto,Selection A,1.39,0.6065,0.7194,True,155798
+2026-08-16T09:14:09.849884,ETH Flipping SOL #438,crypto,Selection A,1.68,0.5478,0.5952,False,437928
+2026-08-16T13:14:09.849884,Fed cuts 25bps #439,politics,Selection A,1.88,0.5727,0.5319,True,14572
+2026-08-16T17:14:09.849884,US Unemployment drops #440,politics,Selection A,2.23,0.4363,0.4484,False,495986
+2026-08-16T21:14:09.849884,Lakers vs Warriors #441,basketball,Selection A,2.29,0.3847,0.4367,True,281991
+2026-08-17T01:14:09.849884,Celtics vs Bucks #442,basketball,Selection A,1.73,0.6066,0.578,False,102132
+2026-08-17T05:14:09.849884,Chiefs vs Ravens #443,football,Selection A,2.1,0.4744,0.4762,True,382885
+2026-08-17T09:14:09.849884,Eagles vs Cowboys #444,football,Selection A,2.37,0.3624,0.4219,False,109215
+2026-08-17T13:14:09.849884,BTC > $100K by month-end #445,crypto,Selection A,1.65,0.6853,0.6061,True,159746
+2026-08-17T17:14:09.849884,ETH Flipping SOL #446,crypto,Selection A,1.68,0.6568,0.5952,False,190471
+2026-08-17T21:14:09.849884,Fed cuts 25bps #447,politics,Selection A,1.9,0.507,0.5263,False,201847
+2026-08-18T01:14:09.849884,US Unemployment drops #448,politics,Selection A,2.0,0.4944,0.5,False,11576
+2026-08-18T05:14:09.849884,Lakers vs Warriors #449,basketball,Selection A,1.62,0.5669,0.6173,True,298219
+2026-08-18T09:14:09.849884,Celtics vs Bucks #450,basketball,Selection A,2.09,0.5183,0.4785,False,41778
+2026-08-18T13:14:09.849884,Chiefs vs Ravens #451,football,Selection A,1.56,0.553,0.641,False,341469
+2026-08-18T17:14:09.849884,Eagles vs Cowboys #452,football,Selection A,1.38,0.6317,0.7246,True,414274
+2026-08-18T21:14:09.849884,BTC > $100K by month-end #453,crypto,Selection A,1.75,0.5244,0.5714,False,396421
+2026-08-19T01:14:09.849884,ETH Flipping SOL #454,crypto,Selection A,2.05,0.531,0.4878,True,82251
+2026-08-19T05:14:09.849884,Fed cuts 25bps #455,politics,Selection A,2.45,0.4649,0.4082,True,303130
+2026-08-19T09:14:09.849884,US Unemployment drops #456,politics,Selection A,1.68,0.6075,0.5952,False,467225
+2026-08-19T13:14:09.849884,Lakers vs Warriors #457,basketball,Selection A,1.51,0.5749,0.6623,False,67984
+2026-08-19T17:14:09.849884,Celtics vs Bucks #458,basketball,Selection A,2.35,0.4935,0.4255,False,198078
+2026-08-19T21:14:09.849884,Chiefs vs Ravens #459,football,Selection A,2.1,0.5502,0.4762,True,173910
+2026-08-20T01:14:09.849884,Eagles vs Cowboys #460,football,Selection A,2.77,0.3592,0.361,True,417531
+2026-08-20T05:14:09.849884,BTC > $100K by month-end #461,crypto,Selection A,3.0,0.4456,0.3333,False,137055
+2026-08-20T09:14:09.849884,ETH Flipping SOL #462,crypto,Selection A,2.01,0.5004,0.4975,False,422547
+2026-08-20T13:14:09.849884,Fed cuts 25bps #463,politics,Selection A,2.56,0.4151,0.3906,False,75405
+2026-08-20T17:14:09.849884,US Unemployment drops #464,politics,Selection A,2.3,0.3782,0.4348,False,253265
+2026-08-20T21:14:09.849884,Lakers vs Warriors #465,basketball,Selection A,1.86,0.5029,0.5376,True,309010
+2026-08-21T01:14:09.849884,Celtics vs Bucks #466,basketball,Selection A,2.37,0.3974,0.4219,False,331908
+2026-08-21T05:14:09.849884,Chiefs vs Ravens #467,football,Selection A,1.59,0.6848,0.6289,True,454064
+2026-08-21T09:14:09.849884,Eagles vs Cowboys #468,football,Selection A,2.65,0.4373,0.3774,True,382105
+2026-08-21T13:14:09.849884,BTC > $100K by month-end #469,crypto,Selection A,2.13,0.5074,0.4695,True,454154
+2026-08-21T17:14:09.849884,ETH Flipping SOL #470,crypto,Selection A,2.61,0.3987,0.3831,False,211436
+2026-08-21T21:14:09.849884,Fed cuts 25bps #471,politics,Selection A,2.12,0.4716,0.4717,False,469043
+2026-08-22T01:14:09.849884,US Unemployment drops #472,politics,Selection A,2.81,0.3683,0.3559,False,137477
+2026-08-22T05:14:09.849884,Lakers vs Warriors #473,basketball,Selection A,1.85,0.6058,0.5405,True,237326
+2026-08-22T09:14:09.849884,Celtics vs Bucks #474,basketball,Selection A,1.4,0.6902,0.7143,True,181258
+2026-08-22T13:14:09.849884,Chiefs vs Ravens #475,football,Selection A,2.84,0.3899,0.3521,True,426801
+2026-08-22T17:14:09.849884,Eagles vs Cowboys #476,football,Selection A,1.96,0.5464,0.5102,True,66236
+2026-08-22T21:14:09.849884,BTC > $100K by month-end #477,crypto,Selection A,1.59,0.651,0.6289,False,276333
+2026-08-23T01:14:09.849884,ETH Flipping SOL #478,crypto,Selection A,2.7,0.3786,0.3704,False,247501
+2026-08-23T05:14:09.849884,Fed cuts 25bps #479,politics,Selection A,2.7,0.408,0.3704,False,328976
+2026-08-23T09:14:09.849884,US Unemployment drops #480,politics,Selection A,1.57,0.5409,0.6369,True,261126
+2026-08-23T13:14:09.849884,Lakers vs Warriors #481,basketball,Selection A,1.69,0.6322,0.5917,False,108668
+2026-08-23T17:14:09.849884,Celtics vs Bucks #482,basketball,Selection A,2.36,0.4405,0.4237,True,171805
+2026-08-23T21:14:09.849884,Chiefs vs Ravens #483,football,Selection A,1.88,0.6149,0.5319,False,440995
+2026-08-24T01:14:09.849884,Eagles vs Cowboys #484,football,Selection A,1.53,0.6547,0.6536,True,231107
+2026-08-24T05:14:09.849884,BTC > $100K by month-end #485,crypto,Selection A,1.45,0.6947,0.6897,False,273963
+2026-08-24T09:14:09.849884,ETH Flipping SOL #486,crypto,Selection A,2.1,0.5242,0.4762,True,331822
+2026-08-24T13:14:09.849884,Fed cuts 25bps #487,politics,Selection A,1.43,0.6377,0.6993,False,109845
+2026-08-24T17:14:09.849884,US Unemployment drops #488,politics,Selection A,2.03,0.5332,0.4926,True,398498
+2026-08-24T21:14:09.849884,Lakers vs Warriors #489,basketball,Selection A,1.65,0.5522,0.6061,True,458394
+2026-08-25T01:14:09.849884,Celtics vs Bucks #490,basketball,Selection A,1.8,0.5366,0.5556,True,350990
+2026-08-25T05:14:09.849884,Chiefs vs Ravens #491,football,Selection A,1.5,0.6276,0.6667,False,145683
+2026-08-25T09:14:09.849884,Eagles vs Cowboys #492,football,Selection A,1.5,0.6942,0.6667,True,108987
+2026-08-25T13:14:09.849884,BTC > $100K by month-end #493,crypto,Selection A,2.41,0.4145,0.4149,True,225758
+2026-08-25T17:14:09.849884,ETH Flipping SOL #494,crypto,Selection A,1.68,0.5654,0.5952,True,442384
+2026-08-25T21:14:09.849884,Fed cuts 25bps #495,politics,Selection A,1.53,0.6313,0.6536,True,492214
+2026-08-26T01:14:09.849884,US Unemployment drops #496,politics,Selection A,1.74,0.5838,0.5747,False,91317
+2026-08-26T05:14:09.849884,Lakers vs Warriors #497,basketball,Selection A,1.69,0.6587,0.5917,True,284280
+2026-08-26T09:14:09.849884,Celtics vs Bucks #498,basketball,Selection A,1.96,0.5346,0.5102,False,446226
+2026-08-26T13:14:09.849884,Chiefs vs Ravens #499,football,Selection A,3.13,0.3778,0.3195,False,411341
+2026-08-26T17:14:09.849884,Eagles vs Cowboys #500,football,Selection A,1.78,0.5393,0.5618,False,164031
