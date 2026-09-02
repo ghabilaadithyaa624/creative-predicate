@@ -1,11 +1,13 @@
 """
 Unit tests for Autonomous Agents and Lifecycle.
 """
-import pytest
 import asyncio
-from trading.paper_engine import PaperTradingEngine, SurvivalMode
-from agents.polymarket_agent import PolymarketAgent
-from agents.sports_agent import SportsAgent
+
+import pytest
+
+from backend.agents.polymarket_agent import PolymarketAgent
+from backend.agents.sports_agent import SportsAgent
+from backend.trading.paper_engine import PaperTradingEngine, SurvivalMode
 
 
 @pytest.mark.asyncio

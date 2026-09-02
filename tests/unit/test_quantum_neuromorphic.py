@@ -2,9 +2,15 @@
 Unit tests for Quantum, Federated, and Neuromorphic modules.
 """
 import numpy as np
-from quantum.quantum_portfolio_optimizer import QuantumPortfolioOptimizer, QuantumMachineLearning
-from federated.federated_learning import FederatedServer, FederatedClient, ShamirSecretSharing
-from neuromorphic.spiking_neural_networks import LIFNeuron, ReservoirComputing, NeuromorphicTrader, BrainInspiredRewardSystem
+
+from backend.federated.federated_learning import FederatedClient, FederatedServer, ShamirSecretSharing
+from backend.neuromorphic.spiking_neural_networks import (
+    BrainInspiredRewardSystem,
+    LIFNeuron,
+    NeuromorphicTrader,
+    ReservoirComputing,
+)
+from backend.quantum.quantum_portfolio_optimizer import QuantumMachineLearning, QuantumPortfolioOptimizer
 
 
 def test_quantum_portfolio_optimization():

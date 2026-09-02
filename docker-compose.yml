@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   agent:
     build: .
@@ -11,19 +9,22 @@ services:
       - DATABASE_URL=sqlite:///data/trading.db
     command: python main.py run --name AlphaBot --rounds 100
 
+  # Needs the [api] extra, which the default image does not install.
+  # Build with: docker compose build --build-arg EXTRAS=api
+  api:
+    build: .
+    command: sh -c "pip install --no-cache-dir -e '.[api]' && python main.py api --port 8000 --host 0.0.0.0"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+
+  # Needs the [dashboard] extra.
   dashboard:
     build: .
-    command: streamlit run dashboard/app.py --server.port 8501 --server.address 0.0.0.0
+    command: sh -c "pip install --no-cache-dir -e '.[dashboard]' && streamlit run frontend/dashboard/app.py --server.port 8501 --server.address 0.0.0.0"
     ports:
       - "8501:8501"
     volumes:
       - ./data:/app/data
       - ./config:/app/config
-
-  api:
-    build: .
-    command: python main.py api --port 8000 --host 0.0.0.0
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./data:/app/data

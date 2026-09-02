@@ -9,7 +9,7 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from backtest.historical_data import HistoricalDataLoader
+from backend.backtest.historical_data import HistoricalDataLoader
 
 
 def main():

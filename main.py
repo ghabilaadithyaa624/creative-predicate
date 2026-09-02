@@ -2,9 +2,10 @@
 """
 Autonomous Trading Agent Framework - CLI & Orchestrator
 """
-import sys
 import asyncio
+import sys
 from pathlib import Path
+
 import click
 import yaml
 from loguru import logger
@@ -14,15 +15,15 @@ ROOT_DIR = Path(__file__).resolve().parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from config.settings import get_settings
-from trading.paper_engine import PaperTradingEngine, SurvivalMode
-from trading.settlement import SettlementEngine
-from agents.polymarket_agent import PolymarketAgent
-from agents.sports_agent import SportsAgent
-from agents.survival_manager import SurvivalRule
-from backtest.simulator import BacktestEngine
-from backtest.results_analyzer import ResultsAnalyzer
-from backtest.historical_data import HistoricalDataLoader
+from backend.agents.polymarket_agent import PolymarketAgent
+from backend.agents.sports_agent import SportsAgent
+from backend.agents.survival_manager import SurvivalRule
+from backend.backtest.historical_data import HistoricalDataLoader
+from backend.backtest.results_analyzer import ResultsAnalyzer
+from backend.backtest.simulator import BacktestEngine
+from backend.config.settings import get_settings
+from backend.trading.paper_engine import PaperTradingEngine, SurvivalMode
+from backend.trading.settlement import SettlementEngine
 
 
 @click.group()
@@ -66,10 +67,10 @@ def run(name: str, bankroll: float, mode: str, rounds: int, config: str):
         min_edge=settings.risk.min_edge,
     )
 
-    click.secho(f"\n=======================================================", fg="cyan", bold=True)
+    click.secho("\n=======================================================", fg="cyan", bold=True)
     click.secho(f"  STARTING AUTONOMOUS AGENT: {name}", fg="cyan", bold=True)
     click.secho(f"  Mode: {mode.upper()} | Bankroll: ${bankroll:.2f} | Rounds: {rounds}", fg="cyan")
-    click.secho(f"=======================================================\n", fg="cyan", bold=True)
+    click.secho("=======================================================\n", fg="cyan", bold=True)
 
     async def _execute_rounds():
         for r in range(1, rounds + 1):
@@ -191,7 +192,7 @@ def backtest(data: str, records: int, monte_carlo: bool):
 def dashboard(port: int):
     """Launch the interactive Streamlit monitoring dashboard."""
     import subprocess
-    app_path = ROOT_DIR / "dashboard" / "app.py"
+    app_path = ROOT_DIR / "frontend" / "dashboard" / "app.py"
     click.secho(f"\n[*] Launching Streamlit Dashboard on port {port}...", fg="green", bold=True)
     subprocess.run(["streamlit", "run", str(app_path), "--server.port", str(port)])
 
@@ -202,7 +203,8 @@ def dashboard(port: int):
 def api(port: int, host: str):
     """Launch FastAPI backend server with REST & WebSocket endpoints."""
     import uvicorn
-    from api.routes import create_app
+
+    from backend.api.routes import create_app
     engine = PaperTradingEngine(initial_bankroll=100.0)
     app = create_app(engine)
     click.secho(f"\n[*] Launching FastAPI Server on http://{host}:{port}...", fg="cyan", bold=True)
@@ -214,7 +216,7 @@ def init():
     """Initialize project folders, sample configs, and database."""
     settings = get_settings()
     settings.ensure_directories()
-    
+
     # Generate initial sample dataset
     sample_file = settings.data_dir / "historical" / "sample.csv"
     if not sample_file.exists():

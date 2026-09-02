@@ -8,8 +8,8 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from backtest.simulator import BacktestEngine
-from backtest.results_analyzer import ResultsAnalyzer
+from backend.backtest.results_analyzer import ResultsAnalyzer
+from backend.backtest.simulator import BacktestEngine
 
 
 def main():

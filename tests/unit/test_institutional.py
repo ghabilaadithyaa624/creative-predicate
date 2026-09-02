@@ -1,18 +1,19 @@
 """
 Unit tests for institutional-grade autonomous agent modules.
 """
-import pytest
 import asyncio
-import numpy as np
 
-from ml_models.probability_engine import SentimentAnalyzer, EnsembleProbabilityModel
-from swarm.coordinator import SwarmCoordinator, AgentRole
-from feeds.websocket_manager import WebSocketFeedManager, MarketUpdate, ArbitrageDetector
-from risk.advanced_position_sizing import PositionSizer
-from notifications.alert_manager import NotificationManager
-from reinforcement_learning.trading_agent_rl import TradingEnvironment, PPOTrader
-from monte_carlo.extreme_risk_simulation import MonteCarloRiskEngine
-from blockchain.decentralized_consensus import BlockchainConsensus, OffChainConsensusBFT
+import numpy as np
+import pytest
+
+from backend.blockchain.decentralized_consensus import BlockchainConsensus, OffChainConsensusBFT
+from backend.feeds.websocket_manager import ArbitrageDetector, MarketUpdate, WebSocketFeedManager
+from backend.ml_models.probability_engine import EnsembleProbabilityModel, SentimentAnalyzer
+from backend.monte_carlo.extreme_risk_simulation import MonteCarloRiskEngine
+from backend.notifications.alert_manager import NotificationManager
+from backend.reinforcement_learning.trading_agent_rl import PPOTrader, TradingEnvironment
+from backend.risk.advanced_position_sizing import PositionSizer
+from backend.swarm.coordinator import AgentRole, SwarmCoordinator
 
 
 def test_sentiment_and_ensemble():
@@ -53,7 +54,7 @@ async def test_feeds_and_arbitrage():
     # Ingest odds that create cross-exchange arbitrage
     upd1 = MarketUpdate("polymarket", "m1", "Event X", odds_home=2.20, odds_away=1.60, volume=10000)
     upd2 = MarketUpdate("betfair", "m1", "Event X", odds_home=1.60, odds_away=2.20, volume=10000)
-    
+
     await feed.ingest_update(upd1)
     await feed.ingest_update(upd2)
 
@@ -112,8 +113,8 @@ def test_blockchain_consensus_and_bft():
     assert eval_res["yes_ratio"] > 0.60
 
     bft = OffChainConsensusBFT(n_agents=4, f_byzantine=1)
-    r1 = bft.submit_vote("p1", "ag1", approve=True)
-    r2 = bft.submit_vote("p1", "ag2", approve=True)
+    bft.submit_vote("p1", "ag1", approve=True)
+    bft.submit_vote("p1", "ag2", approve=True)
     r3 = bft.submit_vote("p1", "ag3", approve=True)
     assert r3["finalized"] is True
     assert r3["approved"] is True

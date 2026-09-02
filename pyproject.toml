@@ -1,0 +1,105 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "creative-predicate"
+version = "0.1.0"
+description = "Paper-trading research sandbox for prediction-market strategy evaluation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+# Core runtime: exactly what `main.py run|simulate-all|backtest` needs.
+# Heavy/optional stacks live in the extras below so a plain install stays fast
+# and CI does not have to download PyTorch to test Kelly sizing.
+dependencies = [
+    "click>=8.1,<9",
+    "loguru>=0.7,<0.8",
+    "pyyaml>=6.0,<7",
+    "numpy>=1.26,<3",
+    "pandas>=2.1,<4",
+    "scipy>=1.11,<2",
+    "requests>=2.31,<3",
+    "beautifulsoup4>=4.12,<5",
+]
+
+[project.optional-dependencies]
+api = [
+    "fastapi>=0.104,<1",
+    "uvicorn[standard]>=0.24,<1",
+    "pydantic>=2.0,<3",
+    "websockets>=12.0",
+    "httpx>=0.25",
+    "aiohttp>=3.9,<4",
+]
+dashboard = [
+    "streamlit>=1.28,<2",
+    "plotly>=5.18,<7",
+]
+ml = [
+    "scikit-learn>=1.3,<2",
+    "torch>=2.1",
+]
+vision = [
+    "playwright>=1.40",
+    "pillow>=10.1",
+    "easyocr>=1.7",
+]
+memory = [
+    "chromadb>=0.4",
+    "redis>=5.0",
+    "sqlalchemy>=2.0",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-asyncio>=0.21",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+creative-predicate = "main:cli"
+
+[tool.setuptools]
+# main.py sits at the repo root and backs the `creative-predicate` console
+# script, so it must ship as a top-level module alongside the packages.
+py-modules = ["main"]
+packages = [
+    "backend",
+    "backend.agents", "backend.analysis", "backend.api", "backend.backtest",
+    "backend.blockchain", "backend.config", "backend.federated", "backend.feeds",
+    "backend.memory", "backend.ml_models", "backend.monte_carlo",
+    "backend.neuromorphic", "backend.notifications", "backend.quantum",
+    "backend.reinforcement_learning", "backend.risk", "backend.scheduler",
+    "backend.swarm", "backend.trading", "backend.vision",
+    "frontend", "frontend.dashboard",
+    "scripts",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# The suite mixes sync and async tests; auto mode removes the need to decorate
+# every coroutine test individually.
+asyncio_mode = "auto"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+# Scoped deliberately. The CI gate catches genuine defects -- undefined names,
+# redefinitions, broken f-strings, mutable-default and comparison bugs -- and
+# enforces import ordering and whitespace hygiene, all of which are clean today.
+#
+# Not yet enabled repo-wide: F401 (72 unused imports, largely __init__
+# re-exports and unused typing symbols) and E402 (19 deliberate sys.path
+# shims before imports). Both are cosmetic, both need a dedicated cleanup
+# pass, and folding them in here would bury real regressions in noise.
+select = ["E", "F", "W", "I"]
+ignore = [
+    "E501",  # long lines are pervasive in existing docstrings/tables
+    "F401",  # unused imports -- tracked separately, see above
+    "E402",  # module import not at top -- intentional sys.path bootstrapping
+]
