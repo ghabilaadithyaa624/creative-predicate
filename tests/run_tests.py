@@ -38,6 +38,15 @@ from tests.unit.test_quantum_neuromorphic import (
     test_quantum_machine_learning,
     test_quantum_portfolio_optimization,
 )
+from tests.unit.test_scraper_live import (
+    test_fallback_can_be_disabled,
+    test_fallback_is_labelled_as_simulated,
+    test_mixed_payload_keeps_good_skips_bad,
+    test_never_emits_fabricated_even_odds_for_real_source,
+    test_non_200_does_not_raise,
+    test_real_payload_prices_are_exact,
+    test_volume_falls_back_to_inner_market,
+)
 from tests.unit.test_settlement import (
     test_edge_realisation_zero_collapses_to_market,
     test_genuine_edge_produces_profit,
@@ -92,6 +101,13 @@ def run_all_tests():
         ("Model: Efficient Market Claims No Edge", test_midrange_market_yields_no_claimed_edge),
         ("Backtest: Monte Carlo Has Real Variance", test_monte_carlo_produces_real_dispersion),
         ("Backtest: Walk-Forward Deterministic", test_walk_forward_still_deterministic),
+        ("Feed: Real Payload Prices Exact", test_real_payload_prices_are_exact),
+        ("Feed: No Fabricated Even Odds", test_never_emits_fabricated_even_odds_for_real_source),
+        ("Feed: Mixed Payload Skips Bad", test_mixed_payload_keeps_good_skips_bad),
+        ("Feed: Volume Fallback", test_volume_falls_back_to_inner_market),
+        ("Feed: Fallback Labelled Simulated", test_fallback_is_labelled_as_simulated),
+        ("Feed: Fallback Disableable", test_fallback_can_be_disabled),
+        ("Feed: Non-200 Handled", test_non_200_does_not_raise),
         ("ML Models: Sentiment & Ensemble", test_sentiment_and_ensemble),
         ("Risk: Advanced Sizing (Optimal f, Kelly)", test_advanced_position_sizing),
         ("RL: Trading Environment & PPO", test_reinforcement_learning_env_and_ppo),

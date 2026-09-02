@@ -104,7 +104,8 @@ CI runs on Python 3.10/3.11/3.12: lint, the pytest suite, the legacy `tests/run_
 
 Honest inventory of what is still missing:
 
-- **Perception is mostly synthetic.** The live API path is brittle and usually falls back to six hard-coded markets.
+- **Perception is mostly synthetic.** The live API path works but usually falls back to six hard-coded markets when the network is unavailable. Synthetic markets are tagged `source="polymarket_simulated"`; pass `allow_synthetic_fallback=False` to `scrape_polymarket()` if you need certainty that prices are real.
+- **The 2% edge floor is rarely cleared.** Against correctly-parsed live prices the model produces directionally sensible but small edges (~1.5%), so the agent usually declines to trade. The probability model, not the data, is now the binding constraint.
 - **No persistence.** `scripts/setup_db.py` creates SQLite tables nothing writes to. CLI, API and dashboard each build a separate in-memory engine and cannot see each other's agents.
 - **The probability model is thin.** A hand-tuned favourite–longshot correction, not a fitted model.
 - **~1,000 lines are unwired** (see *Experimental* above).
